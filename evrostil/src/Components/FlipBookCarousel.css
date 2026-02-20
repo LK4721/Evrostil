@@ -1,0 +1,148 @@
+/* =========================
+   STAGE – POSITION CONTROL
+   ========================= */
+.astraBookStage {
+    position: relative;
+    margin-top: 30px;
+
+    /* твојата старт позиција */
+    margin-left: -440px;
+
+    outline: none;
+    overflow: visible;
+}
+
+/* =========================
+   ANCHOR – SLIDE ANIMATION
+   ========================= */
+.astraBookAnchor {
+    position: relative;
+    transition: transform 350ms ease; /* мора да одговара со SLIDE_MS */
+    will-change: transform;
+}
+
+/* CLOSED: старт лево */
+.astraBookAnchor.closed {
+    transform: translateX(0px);
+}
+
+/* OPEN: се поместува десно */
+.astraBookAnchor.open {
+    transform: translateX(600px);
+}
+
+/* =========================
+   PAGE BASE + BOOK BORDER
+   ========================= */
+.flip-page {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #0e0e0e;
+
+    /* ✅ дебел бел рам */
+    border: 16px solid #efecec;
+
+    /* ✅ уште подебело дно (книга ефект) */
+    border-bottom: 16px solid #efecec;
+
+    overflow: hidden;
+
+    /* малку depth како книга */
+    box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+            0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* COVER PAGE (ист рам) */
+.flip-page.hard {
+    background: #0b0b0b;
+    border: 6px solid #ffffff;
+    border-bottom: 14px solid #ffffff;
+}
+
+/* =========================
+   IMAGES – FULL COVER
+   ========================= */
+.cover,
+.page-img {
+    width: 100%;
+    height: 100%;
+}
+
+.cover img,
+.page-img img {
+    width: 100%;
+    height: 100%;
+
+    /* 🔥 покрива цел flipbook */
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* =========================
+   TEXT PAGES
+   ========================= */
+.page-text {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #aaa6a6 100%
+    );    color: black;
+    box-sizing: border-box;
+    line-height: 1.6;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Arial Rounded MT Bold";
+}
+
+.page-text h3 {
+    margin: 0 0 12px 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   BLANK FILLER PAGE
+   ========================= */
+.page-blank {
+    width: 100%;
+    height: 100%;
+    background-image: url("../sliki/blank.png");
+    background-size: cover;
+}
+
+/* =========================
+   PAGEFLIP CLIPPING FIX
+   ========================= */
+.stf__wrapper {
+    overflow: visible !important;
+}
+
+/* =========================
+   INTERACTION OVERLAYS
+   ========================= */
+.startOpenCatcher {
+    position: absolute;
+    inset: 0;
+    z-index: 999;
+    background: transparent;
+    cursor: pointer;
+}
+
+.endNextCatcher {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
+    z-index: 999;
+    background: transparent;
+}

@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap');
+
+
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    overflow: hidden; !* IMPORTANT *!*/
+/*}*/
+
+
+/*body {*/
+/*    scroll-snap-type: y mandatory;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+.image img {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover; /* Crops image to fill space */
+    opacity:50%;
+}
+body{
+    background: linear-gradient(to right, #1b1919 0%, #151313 50%, #1b1919 100%);
+}
+
+.Home {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    background: url('../sliki/blackBrick.jpg') fixed center/cover;
+}
+
+.Home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8; /* Adjust opacity: 0.1 to 1 */
+    filter: blur(3px); /* Adjust blur: 0px to 10px */
+    z-index: -1; /* Behind content */
+}
+
+.text{
+    color: white;
+    position: absolute;
+    top: 280px;
+    left: 5%;
+    font-size: 60px;
+    text-align: left;
+    animation: scaleLogo 5s infinite;
+}
+@keyframes scaleLogo {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.02);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.ks{
+    animation: slideLeft 0.8s ease-out 1s;
+    animation-fill-mode: backwards;
+    font-family: "Book Antiqua"
+}
+
+.srce{
+    animation: slideLeft 1.4s ease-out 1s;
+    animation-fill-mode: backwards;
+}
+
+.km{
+    animation: slideLeft 0.8s ease-out 1.5s;
+    animation-fill-mode: backwards;
+    font-family: "Book Antiqua"
+}
+.slogan{
+    animation: slideLeft 0.8s ease-out 2s;
+    animation-fill-mode: backwards;
+    font-family: "Book Antiqua"
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.text span{
+    color: #ca1919;
+    text-shadow:
+            2px -2px 0 #680404;
+    font-weight: bold;
+}
+
+.main{
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+/* Updated cards section */
+.linkovi {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.linkplan,
+.linkmebel,
+.linkrepo {
+    width: 30%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 20px;
+    flex-shrink: 0;
+    margin-top:50px;
+}
+
+.linkplan:hover,
+.linkmebel:hover,
+.linkrepo:hover {
+    transform: scale(1.05);
+}
+
+.linkovi img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid grey;
+    display: block;
+}
+
+.label {
+    position: absolute;
+    bottom: 19%;
+    left: 0;
+    width: 81%;
+    box-sizing: border-box;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    padding: 30px 25px;
+    background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.9) 0%,
+            rgba(0,0,0,0.7) 50%,
+            rgba(0,0,0,0) 100%
+    );
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease-in-out;
+}
+
+.linkplan:hover .label,
+.linkmebel:hover .label,
+.linkrepo:hover .label {
+    background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.95) 0%,
+            rgba(0,0,0,0.8) 50%,
+            rgba(0,0,0,0.1) 100%
+    );
+    padding: 35px 25px;
+}
+
+.header {
+    font-size: 50px;
+    color: white;
+    background-color: transparent;
+    padding: 0px 50px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: Cambria;
+    letter-spacing: 0.15em;
+
+    background: linear-gradient(135deg, #ffffff 0%, #e6e6e6 50%, #b8b8b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    text-shadow: none;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 40px rgba(255, 255, 255, 0.2))
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+
+    animation: headerPulse 4s ease-in-out infinite;
+    padding-top:60px;
+}
+
+@keyframes headerPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4))
+        drop-shadow(0 0 40px rgba(255, 255, 255, 0.2))
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6))
+        drop-shadow(0 0 60px rgba(255, 255, 255, 0.3))
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+    }
+}
+
+.video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 90px;
+    height: 535px;
+    gap: 50px;
+}
+
+video{
+    height: 420px;
+    width:auto;
+    margin-bottom: 30px;
+    border-radius:5%;
+    box-shadow: 0 5px 15px #939292;
+}
+
+.title, .title1{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.title1{
+    color:white;
+    width:100%;
+    margin-bottom:40px;
+}
+.title{
+    color: #cdcccc;
+    margin-bottom: 30px;
+}
+
+.vidCont{
+    display: flex;
+    justify-content: center;
+}
+
+.learnmore{
+    display:flex;
+    justify-content: center;
+    margin: auto;
+    border:1px solid #635959;
+    width: 200px;
+    height: auto;
+    background-color: #000000;
+    color: white;
+    font-size: 20px;
+    padding:10px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: "Book Antiqua", serif;
+}
+.learnmore:hover{
+    background-color: #2b2929;
+    cursor: pointer;
+    scale: 1.15;
+    transition-duration:0.2s;
+}
+
+.srce{
+    width:650px;
+    height:auto;
+    position: absolute;
+    left:50px;
+    top:-70px;
+}
+
+drawer{
+    opacity:0;
+}
+
+.drawer1 {
+    opacity: 0;
+    position: absolute;
+    left: 50px;
+    top: -100px;
+    animation: slideShake 0.8s ease-out 0.5s forwards;
+    will-change: transform;
+    width:300px;
+}
+
+.drawer2 {
+    opacity: 0;
+    position: absolute;
+    left: 50px;
+    top: 15px;
+    animation: slideShake 0.8s ease-out  0.8s forwards;
+    will-change: transform;
+    width:300px;
+}
+
+.drawer3 {
+    opacity: 0;
+    position: absolute;
+    left: 50px;
+    top:130px;
+    animation: slideShake 0.8s ease-out 1.2s forwards;
+    will-change: transform;
+    width:300px;
+}
+
+
+@keyframes slideShake {
+    0% {
+        transform: translateX(-150%); /* way off to the left */
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(12%); /* overshoot past final position */
+        opacity: 1;
+    }
+
+    75% {
+        transform: translateX(12%); /* overshoot past final position */
+        opacity: 1;
+    }
+
+    90% {
+        transform: translateX(12%); /* overshoot past final position */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(12%); /* overshoot past final position */
+        opacity: 1;
+    }
+}
+
+.leftleg{
+    opacity: 0;
+    position: absolute;
+    left: 430px;
+    top: -90px;
+    animation: slideUp 0.8s ease-out 1.5s forwards;
+    width:90px;
+}
+.rightleg{
+    opacity: 0;
+    position: absolute;
+    left: 600px;
+    top: -135px;
+    animation: slideUp 0.8s ease-out 1.5s forwards;
+    top:-90px;
+    width: 90px;
+}
+.hat{
+    opacity: 0;
+    position: absolute;
+    left: 425px;
+    top: -103px;
+    animation: slideDown 0.8s ease-out 1.5s forwards;
+    width:260px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideUp {
+    from{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.textlogo{
+    opacity: 0;
+    position: absolute;
+    top: 250px;
+    left: 85px;
+    width: 600px;
+    animation: slideLeft 0.8s ease-out 2.5s forwards;
+}
+
+.videoDesc{
+    margin-right:90px;
+}
+
+.videoDesc div{
+    font-size: 50px;
+}
+.videoDesc div , .header{
+    font-family: Cambria;
+    font-weight: bold;
+}
+
+.hero, .main, .bot{
+    height: 90vh; /* important */
+    scroll-snap-align: start;
+    scroll-margin-top: 90px;
+    padding: 0px 0px;
+}
+.footer {
+    background: #111;          /* or whatever you want */
+    background-image: none;    /* IMPORTANT */
+}
+.footer::before {
+    content: none;
+}

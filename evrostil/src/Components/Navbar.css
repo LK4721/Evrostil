@@ -1,0 +1,213 @@
+.stick{
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background: transparent;
+    animation: slideDown 0.8s ease-out 3s;
+    animation-fill-mode: backwards;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-items{
+    display: flex;
+    flex:1;
+    justify-content: center;
+}
+
+.navbar-items > ul {
+    color: black;
+    list-style: none;
+    display:flex;
+    gap:40px;
+    font-size:18px;
+    padding:10px;
+    font-family: "Book Antiqua";
+    transition: all 0.3s ease;
+}
+
+.logo{
+    display: inline-block;
+    justify-content: center;
+}
+
+.logo img{
+    position: absolute;
+    top: 10px;
+    left: 90px;
+    width:100px;
+    height:auto;
+    padding:10px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* =========================
+   NAVLINK BASE
+   ========================= */
+.navbar-items ul li {
+    /* keep li minimal */
+    padding-bottom: 0;
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+
+.navbar-items ul li a.navlink{
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+    transition: all 0.3s ease;
+}
+
+/* hover */
+.navbar-items ul li:hover a.navlink{
+    color: #575555;
+    cursor:pointer;
+    scale:1.25;
+    font-weight:bold;
+    transition-duration:0.2s;
+    border-bottom:1px solid #514f4f;
+}
+
+/* active route */
+.navbar-items ul li a.navlink.active{
+    font-weight:bold;
+    border-bottom:2px solid black;
+}
+
+/* Dark mode */
+.navbar.dark-mode{
+    background-color: transparent;
+}
+
+.navbar.dark-mode .navbar-items ul li a.navlink{
+    color: white;
+    border-bottom:1px solid white;
+}
+
+.navbar.dark-mode .navbar-items ul li:hover a.navlink{
+    color: #ffffff;
+    border-bottom:2px solid white;
+}
+
+.navbar.dark-mode .navbar-items ul li a.navlink.active{
+    border-bottom:2px solid white;
+}
+
+.dali{
+    position: absolute;
+    top:30px;
+    right:100px;
+    display: flex;
+    gap:20px;
+}
+
+.dali button{
+    width:30px;
+    display:flex;
+    justify-content: center;
+    border: 0px;
+    background-color: transparent;
+}
+
+.dali button img{
+    width:30px;
+    scale:1.15;
+}
+
+.moon{
+    font-size:23px
+}
+
+.izvest{
+    padding:4px;
+    font-weight: bold;
+    font-family: "Book Antiqua";
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.izvest-container{
+    text-align: center;
+    position: absolute;
+    top: 99px;
+    width: 100%;
+    background-color: #f33333;
+    color: white;
+    overflow: hidden;
+    animation: slideLeft 1.3s ease-out 3.8s;
+    animation-fill-mode: backwards;
+}
+
+.dali button:hover{
+    cursor: pointer;
+    scale:1.25;
+    transition-duration:0.2s;
+}
+
+/* SCROLLED STATE - Dark background when away from hero */
+.navbar.scrolled,
+.navbar.dark-mode.scrolled {
+    background-color: rgba(25, 23, 23, 0.65) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* White text when scrolled */
+.navbar.scrolled .navbar-items ul li a.navlink {
+    color: white !important;
+    border-bottom: 1px solid white !important;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .navbar-items ul li:hover a.navlink {
+    color: #ffffff !important;
+    border-bottom: 2px solid white !important;
+}
+
+.navbar.scrolled .navbar-items ul li a.navlink.active{
+    border-bottom: 2px solid white !important;
+}
+
+/* NOT scrolled - ensure transparent */
+.navbar:not(.scrolled) {
+    background-color: transparent !important;
+}
+
+.navbar.dark-mode:not(.scrolled) {
+    background-color: transparent !important;
+}

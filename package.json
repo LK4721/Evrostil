@@ -1,0 +1,15 @@
+{
+  "name": "Evrostil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0"
+  }
+}
