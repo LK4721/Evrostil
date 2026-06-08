@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "node scripts/cloudflare-build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
