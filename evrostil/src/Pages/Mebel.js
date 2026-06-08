@@ -1,172 +1,359 @@
-import React, { useMemo, useState, useCallback, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import React, { useMemo, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Mebel.css";
+import Footer from "../Components/footer.js";
 
-const cx = (...c) => c.filter(Boolean).join(" ");
-
-// ✅ Photos from /public (NO imports)
 const CATEGORIES = [
-    {
-      title: "КУЈНИ",
-      photos: [
-        "/Kujni/render1.png",
-        "/Kujni/render2.png",
-        "/Kujni/render3.png",
-        "/Kujni/render4.png",
-        "/Kujni/render5.png",
-        "/Kujni/render6.png",
-        "/Kujni/render7.png",
-        "/Kujni/render8.png",
-        "/Kujni/render9.png",
-      ],
-    },
-    {
-        title: "СПАЛНИ СОБИ",
-        photos: [
-            "/Spalni sobi/slika1render.png",
-            "/Spalni sobi/slika2render.png",
-            "/Spalni sobi/slika3render.png",
-            "/Spalni sobi/slika4render.png",
-        ],
-    },
-    {
-        title: "ДЕТСКИ СОБИ",
-        photos: [
-            "/Detski Sobi/detski1render.png",
-            "/Detski Sobi/detski4render.png",
-            "/Detski Sobi/detski2render.png",
-            "/Detski Sobi/detski3render.png",
-
-        ],
-    },
-    {
-        title: "ПЛАКАРИ",
-        photos: [
-            "/Plakari/plakar4render.png",
-            "/Plakari/plakar5render.png",
-            "/Plakari/plakar2 render.png",
-            "/Plakari/plaka1render.png",
-            "/Plakari/plakar3render.png",
-        ],
-    },
-    {
-        title: "КОМОДИ",
-        photos: [
-            "/Komodi/komoda2render.png",
-            "/Komodi/komoda3render.png",
-            "/Komodi/komoda4render.png",
-            "/Komodi/komoda5render.png",
-            "/Komodi/komoda1render.png",
-        ],
-    },
-    {
-        title: "ОСТАНАТО",
-        photos: [
-            "/Ostanato/slika1render.png",
-            "/Ostanato/slika2render.png",
-            "/Ostanato/slika3render.png",
-            "/Ostanato/slika4render.png",
-            "/Ostanato/slika5render.png",
-            "/Ostanato/slika6render.png",
-            "/Ostanato/slika7render.png",
-        ],
-    },
+  {
+    title: "Кујни",
+    photos: [
+      "/Kujni/render3.webp",
+      "/Kujni/render2.webp",
+      "/Kujni/render1.webp",
+      "/Kujni/render4.webp",
+      "/Kujni/render5.webp",
+      "/Kujni/render6.webp",
+      "/Kujni/render7.webp",
+      "/Kujni/render8.webp",
+    ],
+  },
+  {
+    title: "Спални соби",
+    photos: [
+      "/Spalni sobi/slika1render.webp",
+      "/Spalni sobi/slika2render.webp",
+      "/Spalni sobi/slika3render.webp",
+      "/Spalni sobi/slika4render.webp",
+    ],
+  },
+  {
+    title: "Детски соби",
+    photos: [
+      "/Detski Sobi/detski1render.webp",
+      "/Detski Sobi/detski4render.webp",
+      "/Detski Sobi/detski2render.webp",
+      "/Detski Sobi/detski3render.webp",
+    ],
+  },
+  {
+    title: "Плакари",
+    photos: [
+      "/Plakari/plakar4render.webp",
+      "/Plakari/plakar5render.webp",
+      "/Plakari/plakar2 render.webp",
+      "/Plakari/plaka1render.webp",
+      "/Plakari/plakar3render.webp",
+    ],
+  },
+  {
+    title: "Комоди",
+    photos: [
+      "/Komodi/komoda2render.webp",
+      "/Komodi/komoda3render.webp",
+      "/Komodi/komoda4render.webp",
+      "/Komodi/komoda5render.webp",
+      "/Komodi/komoda1render.webp",
+    ],
+  },
+  {
+    title: "Останато",
+    photos: [
+      "/Ostanato/slika1render.webp",
+      "/Ostanato/slika2render.webp",
+      "/Ostanato/slika3render.webp",
+      "/Ostanato/slika4render.webp",
+      "/Ostanato/slika5render.webp",
+      "/Ostanato/slika6render.webp",
+    ],
+  },
 ];
 
+const HERO_IMAGE = "/Uslugi/mebelHeroPage.webp";
+
+const preloadImageLinks = (urls) => {
+  if (typeof document === "undefined") {
+    return () => {};
+  }
+
+  const links = urls.filter(Boolean).map((href) => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = href;
+    document.head.appendChild(link);
+    return link;
+  });
+
+  return () => links.forEach((link) => link.parentNode?.removeChild(link));
+};
+
+const getVisiblePhotoCount = () => {
+  if (typeof window === "undefined") return 3;
+  if (window.innerWidth <= 560) return 1;
+  if (window.innerWidth <= 950) return 2;
+  return 3;
+};
 
 export default function Mebel() {
-    const [activeIndex, setActiveIndex] = useState(null);
-    const [align, setAlign] = useState("start"); // start | center | end
-    const [isFullscreen, SetFullscreen] = useState(false);
+  const navigate = useNavigate();
 
-    const toggleFullscreen = () => {
-        SetFullscreen((prev) => !prev);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [fullscreenIndex, setFullscreenIndex] = useState(null);
+  const [carouselStart, setCarouselStart] = useState(0);
+  const [visiblePhotoCount, setVisiblePhotoCount] = useState(getVisiblePhotoCount);
+
+  const activeCategory = useMemo(() => CATEGORIES[activeIndex], [activeIndex]);
+  const activePhotos = activeCategory.photos;
+
+  const visiblePhotos = useMemo(() => {
+    if (!activePhotos.length) return [];
+
+    return Array.from(
+      { length: Math.min(visiblePhotoCount, activePhotos.length) },
+      (_, offset) => {
+        const index = (carouselStart + offset) % activePhotos.length;
+
+        return {
+          src: activePhotos[index],
+          index,
+        };
+      },
+    );
+  }, [activePhotos, carouselStart, visiblePhotoCount]);
+
+  useEffect(() => {
+    const cleanup = preloadImageLinks([
+      HERO_IMAGE,
+      ...activePhotos.slice(0, visiblePhotoCount),
+    ]);
+    return cleanup;
+  }, [activePhotos, visiblePhotoCount]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVisiblePhotoCount(getVisiblePhotoCount());
     };
 
-    const isOpen = activeIndex !== null;
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-    const activeCategory = useMemo(() => {
-        if (activeIndex === null) return null;
-        return CATEGORIES[activeIndex] ?? null;
-    }, [activeIndex]);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-    // Embla
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-        loop: false,
-        align,
-        containScroll: "trimSnaps",
-    });
+  const fullscreenImage =
+    fullscreenIndex === null ? null : activePhotos[fullscreenIndex];
 
-    const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-    const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const selectCategory = (index) => {
+    setActiveIndex(index);
+    setFullscreenIndex(null);
+    setCarouselStart(0);
+  };
 
-    const handleClick = useCallback(
-        (index) => {
-            setActiveIndex((prevIdx) => (prevIdx === index ? null :index));
-        },
-        []
+  const openFullscreen = (index) => {
+    setFullscreenIndex(index);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenIndex(null);
+  };
+
+  const showPrevCarousel = () => {
+    if (activePhotos.length <= visiblePhotoCount) {
+      setCarouselStart(0);
+      return;
+    }
+
+    setCarouselStart((current) =>
+      current === 0 ? activePhotos.length - 1 : current - 1,
     );
+  };
 
-    // When category changes, jump to slide 0
-    useEffect(() => {
-        if (!emblaApi) return;
-        emblaApi.scrollTo(0, true);
-    }, [emblaApi, activeIndex]);
+  const showNextCarousel = () => {
+    if (activePhotos.length <= visiblePhotoCount) {
+      setCarouselStart(0);
+      return;
+    }
 
-    return (
-        <div className="MebelWrapper">
-            <div className="MebelLayout">
-                {/* LEFT: MENU */}
-                <div className={cx("Mebel", isOpen && "shiftLeft", isFullscreen && "isFullscreen")}>
-                    <ul className="MebelList">
-                        {CATEGORIES.map((cat, index) => (
-                            <li
-                                key={cat.title}
-                                className={cx("MebelLi", activeIndex === index && "active")}
-                                onClick={() => handleClick(index)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => {
-                                    if (e.key === " ") handleClick(index);
-                                }}
-                            >
-                                {cat.title}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+    setCarouselStart((current) => (current + 1) % activePhotos.length);
+  };
 
-                {/* RIGHT: CAROUSEL */}
-                <div className={cx("MebelCarouselPanel",isOpen && "show",  isFullscreen && "isFullscreen")}>
-                    {activeCategory && (
-                        <>
-                            <button className="fullscreen" onClick={toggleFullscreen}>
-                                {isFullscreen ? "✕" : "⛶"}
-                            </button>
+  const showPrevFullscreen = (event) => {
+    event?.stopPropagation();
 
-                            <div className="EmblaHeader">
-                                <div className="EmblaBtns">
-                                    <button type="button" onClick={prev}>Prev</button>
-                                    <button type="button" onClick={next}>Next</button>
-                                </div>
-                            </div>
+    setFullscreenIndex((current) =>
+      current === 0 ? activePhotos.length - 1 : current - 1,
+    );
+  };
 
-                            <div className={`embla ${isFullscreen ? "isFullscreen" : ""}`}>
-                                <div className="embla__viewport" ref={emblaRef}>
-                                    <div className="embla__container ">
-                                        {activeCategory.photos.map((src, i) => (
-                                            <div className="embla__slide" key={`${src}-${i}`}>
-                                                <img className="embla__img" src={src} alt="" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </div>
+  const showNextFullscreen = (event) => {
+    event?.stopPropagation();
 
-            </div>
+    setFullscreenIndex((current) =>
+      current === activePhotos.length - 1 ? 0 : current + 1,
+    );
+  };
+
+  useEffect(() => {
+    if (fullscreenIndex === null) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setFullscreenIndex(null);
+      }
+
+      if (event.key === "ArrowLeft") {
+        setFullscreenIndex((current) =>
+          current === 0 ? activePhotos.length - 1 : current - 1,
+        );
+      }
+
+      if (event.key === "ArrowRight") {
+        setFullscreenIndex((current) =>
+          current === activePhotos.length - 1 ? 0 : current + 1,
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [fullscreenIndex, activePhotos.length]);
+
+  return (
+    <>
+      <div className="MebelWrapper">
+        <section className="MebelHero">
+          <div
+            className="MebelHeroImageWrap"
+            style={{
+              backgroundImage: "url('/Uslugi/mebelHeroPage.webp')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          <div className="MebelHeroOverlay" />
+
+          <div className="MebelHeroText">
+            <span className="MebelHeroEyebrow">ЕВРОСТИЛ-М</span>
+            <h1 className="MebelHeroTitle">МЕБЕЛ</h1>
+            <p>Квалитетен мебел за секој дом.</p>
+          </div>
+        </section>
+
+        <div className="MebelCategoryBar">
+          {CATEGORIES.map((cat, index) => (
+            <button
+              key={cat.title}
+              className={`MebelCategoryBtn${
+                index === activeIndex ? " active" : ""
+              }`}
+              type="button"
+              onClick={() => selectCategory(index)}
+            >
+              {cat.title}
+            </button>
+          ))}
         </div>
-    );
+
+        <section className="MebelContent">
+          <div className="MebelCarouselShell">
+            <button
+              className="MebelSideArrow left"
+              type="button"
+              onClick={showPrevCarousel}
+              aria-label="Previous"
+            >
+              ‹
+            </button>
+
+            <div className="MebelCarouselGrid">
+              {visiblePhotos.map(({ src, index }) => (
+                <button
+                  className="MebelProjectCard"
+                  key={`${src}-${index}`}
+                  type="button"
+                  onClick={() => openFullscreen(index)}
+                >
+                  <img
+                    src={src}
+                    alt={`${activeCategory.title} ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+              ))}
+            </div>
+
+            <button
+              className="MebelSideArrow right"
+              type="button"
+              onClick={showNextCarousel}
+              aria-label="Next"
+            >
+              ›
+            </button>
+          </div>
+
+          <div className="MebelConsultBox">
+            <span>Бесплатна консултација</span>
+            <h3>Имате идеја за мебел?</h3>
+            <p>
+              Испратете димензии или скица од просторот и ќе ви предложиме
+              решение.
+            </p>
+            <button type="button" onClick={() => navigate("/kontakt")}>
+              Закажете консултација
+            </button>
+          </div>
+        </section>
+
+        {fullscreenImage && (
+          <div className="MebelLightbox" onClick={closeFullscreen}>
+            <button
+              className="MebelLightboxClose"
+              type="button"
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+            <button
+              className="MebelLightboxArrow prev"
+              type="button"
+              onClick={showPrevFullscreen}
+              aria-label="Previous"
+            >
+              ‹
+            </button>
+
+            <img
+              src={fullscreenImage}
+              alt="Мебел преглед"
+              onClick={(event) => event.stopPropagation()}
+            />
+
+            <button
+              className="MebelLightboxArrow next"
+              type="button"
+              onClick={showNextFullscreen}
+              aria-label="Next"
+            >
+              ›
+            </button>
+
+            <div className="MebelLightboxCounter">
+              {fullscreenIndex + 1} / {activePhotos.length}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <Footer />
+    </>
+  );
 }

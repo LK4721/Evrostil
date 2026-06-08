@@ -1,258 +1,565 @@
-/* WRAPPER – BACKGROUND НЕ СЕ МЕНУВА */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+/* ── wrapper ── */
 .MebelWrapper {
-    min-height: 100vh;
+  min-height: 100vh;
+  background: url("../sliki/blackBrick.webp") fixed center / cover;
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #fff;
+}
+
+/* ── HERO ── */
+.MebelHero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 460px;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MebelHeroImageWrap {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+}
+
+.MebelHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.28) 45%,
+      rgba(0, 0, 0, 0.18) 100%
+    ),
+    linear-gradient(to right, rgba(0, 0, 0, 0.22), transparent 50%);
+}
+
+.MebelHeroText {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 24px;
+  margin-top: 70px;
+}
+
+.MebelHeroEyebrow {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.84);
+  text-transform: uppercase;
+}
+
+.MebelHeroTitle {
+  margin: 0;
+  font-size: clamp(54px, 7vw, 118px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+}
+
+.MebelHeroText p {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: clamp(15px, 1.5vw, 22px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.8);
+}
+
+/* ── CATEGORY BAR ── */
+.MebelCategoryBar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  min-width: 0;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.MebelCategoryBtn {
+  min-width: 0;
+  padding: 22px 16px;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(11px, 1.1vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s;
+  position: relative;
+}
+
+.MebelCategoryBtn:last-child {
+  border-right: none;
+}
+
+.MebelCategoryBtn::after {
+  content: none;
+}
+
+.MebelCategoryBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.MebelCategoryBtn.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── CONTENT ── */
+.MebelContent {
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  padding: 56px 16px 72px;
+  box-sizing: border-box;
+}
+
+/* ── CAROUSEL HEADER ── */
+.MebelCarouselHeader {
+  width: 100%;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.MebelCarouselHeader span {
+  display: block;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.MebelCarouselHeader h2 {
+  margin: 8px 0 0;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 3vw, 52px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.MebelCarouselCounter {
+  min-width: 78px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+/* ── CAROUSEL ── */
+.MebelCarouselShell {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  gap: 18px;
+}
+
+.MebelCarouselGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.MebelSideArrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(0, 0, 0, 0.42);
+  color: #fff;
+  font-size: 46px;
+  line-height: 0.75;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.MebelSideArrow:hover {
+  background: #fff;
+  color: #111;
+  transform: scale(1.06);
+}
+
+.MebelProjectCard {
+  position: relative;
+  object-fit: contain;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(10, 10, 10, 0.82);
+  cursor: pointer;
+  transition:
+    border-color 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  min-height: 280px;
+}
+
+.MebelProjectCard::after {
+  content: "ПРЕГЛЕД";
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.28s ease;
+}
+
+.MebelProjectCard.active {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.MebelProjectCard img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.95) contrast(1.03);
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.MebelProjectCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.52);
+}
+
+.MebelProjectCard:hover img {
+  transform: scale(1.045);
+  filter: brightness(1) contrast(1.08);
+}
+
+.MebelProjectCard:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── CONSULT BOX ── */
+.MebelConsultBox {
+  padding: 36px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.43);
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+  width: 89%;
+  margin:40px auto 0px;
+}
+
+.MebelConsultBox span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.MebelConsultBox h3 {
+  margin: 0 0 10px;
+  font-family: Georgia, serif;
+  font-size: clamp(19px, 2vw, 38px);
+  font-weight: 400;
+  flex: 1 1 280px;
+}
+
+.MebelConsultBox p {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.65;
+}
+
+.MebelConsultBox > div {
+  flex: 1 1 280px;
+}
+
+.MebelConsultBox button {
+  height: 46px;
+  padding: 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  background: #fff;
+  color: #0a0a0a;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  flex-shrink: 0;
+}
+
+.MebelConsultBox button:hover {
+  background: transparent;
+  color: #fff;
+}
+
+/* ── LIGHTBOX ── */
+.MebelLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.MebelLightboxClose {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MebelLightboxArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.42);
+  color: #fff;
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.MebelLightboxArrow:hover,
+.MebelLightboxClose:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.MebelLightboxArrow.prev {
+  left: 28px;
+}
+
+.MebelLightboxArrow.next {
+  right: 28px;
+}
+
+.MebelLightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.MebelLightboxCounter {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(0, 0, 0, 0.42);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1250px) {
+  .MebelCarouselShell {
+    grid-template-columns: 56px 1fr 56px;
+    gap: 14px;
+  }
+
+  .MebelProjectCard {
+    height: 280px;
+  }
+}
+
+@media (max-width: 950px) {
+  .MebelWrapper {
+    background: url("../sliki/blackBrick.webp") center top / auto 720px repeat-y;
+  }
+
+  .MebelHero {
+    height: clamp(330px, 54vw, 460px);
+    min-height: 380px;
+  }
+
+  .MebelCategoryBar {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('../sliki/blackBrick.jpg') center/cover fixed no-repeat;
-}
+    grid-template-columns: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background: rgba(6, 6, 6, 0.92);
+  }
 
-/* LAYOUT: menu left + carousel right */
-.MebelLayout{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 0 24px;
-}
+  .MebelCategoryBar::-webkit-scrollbar {
+    display: none;
+  }
 
-/* CENTER PANEL */
-.Mebel {
-    width: min(400px, 92vw);
-    padding: 35px 6px;
+  .MebelCategoryBtn {
+    flex: 0 0 clamp(150px, 38vw, 230px);
+    scroll-snap-align: start;
+    min-height: 70px;
+    padding: 14px 10px;
+    font-size: 10px;
+  }
 
-    background: rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(4px);
+  .MebelContent {
+    padding: 40px 18px 56px;
+  }
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  .MebelCarouselHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
-    /* IMPORTANT: transition goes here so it animates both ways */
-    transition: transform 1s ease, opacity 0.6s ease;
-}
-
-.Mebel.shiftLeft{
-    transform: translateX(-490px) translateY(-50px) scale(0.7);
-}
-
-/* LIST */
-.MebelList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-/* LIST ITEM */
-.MebelLi {
-    font-family: "Playfair Display", serif;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.92);
-    cursor: pointer;
-
-    padding: 18px 10px;
-    position: relative;
-
-    transition:
-            opacity 300ms ease,
-            transform 320ms ease,
-            letter-spacing 320ms ease;
-}
-
-/* DIVIDER LINE (underline) */
-.MebelLi::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 160px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.18);
-    transform: translateX(-50%);
-
-    /* IMPORTANT: transition here (not only in active) */
-    transition: width 500ms ease, background 320ms ease;
-}
-
-.MebelLi.active::after {
-    width: 280px;
-    background: white;
-}
-
-/* HOVER */
-.MebelLi:hover {
-    opacity: 0.7;
-    transform: scale(1.06);
-    letter-spacing: 8px;
-}
-
-/* ACTIVE */
-.MebelLi.active {
-    opacity: 1;
-    letter-spacing: 9px;
-}
-
-/* RIGHT PANEL (Carousel container) */
-.MebelCarouselPanel{
-    position: absolute;
-    right: 100px;
-    top:135px;
-    width: min(900px, 92vw);
-    opacity: 0;
-    transform: translateX(30px);
-    pointer-events: none;
-    transition: opacity 500ms ease, transform 1500ms ease;
-
-    /* optional: match your glass look */
-    background: rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-    padding: 18px;
-    border-radius: 20px;
-}
-
-.MebelCarouselPanel.show{
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-
-    transition:
-            opacity 600ms ease 0.6s,      /* delay */
-            transform 600ms ease 0.9s;
-}
-
-
-
-.EmblaBtns{
-    display: flex;
-    padding: 20px;
-    padding-top:0px;
+  .MebelCarouselShell {
+    grid-template-columns: 48px 1fr 48px;
     gap: 10px;
-}
+    justify-items: center;
+  }
 
-.EmblaBtns button{
-    cursor: pointer;
-    padding: 8px 12px;
-    background: transparent;
-    color: rgba(255,255,255,0.92);
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: opacity 250ms ease, transform 250ms ease;
-    border-radius: 5px;
-}
+  .MebelSideArrow {
+    width: 44px;
+    height: 44px;
+    font-size: 36px;
+  }
 
-.EmblaBtns button:hover{
-    opacity: 0.75;
-    transform: translateY(-1px);
-}
+  .MebelCarouselGrid {
+    width: fit-content;
+    max-width: 100%;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
 
-/* Embla basic */
-.embla__viewport{
-    overflow: hidden;
-    height: fit-content;
-}
+  .MebelProjectCard {
+    width: clamp(210px, 38vw, 300px);
+    height: clamp(220px, 34vw, 280px);
+    min-height: 0;
+  }
 
-.embla__container{
-    display: flex;
-    will-change: transform;
-    touch-action: pan-y;
-    gap:20px;
-    width: 700px;
-}
-
-.embla__slide{
-    flex: 0 0 90%;
-    min-width: 0px;
-}
-
-.embla__img{
+  .MebelProjectCard img {
     width: 100%;
-    display: block;
+    height: 100%;
     object-fit: cover;
-    border-radius: 14px;
+  }
+
+  .MebelConsultBox {
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 22px;
+  }
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .MebelLayout{
-        flex-direction: column;
-        gap: 18px;
-    }
+@media (max-width: 560px) {
+  .MebelHero {
+    height: clamp(300px, 56vw, 380px);
+    min-height: 330px;
+  }
 
-    .Mebel {
-        padding: 36px 22px;
-        transform: none !important; /* don’t shift left on small screens */
-        width: min(520px, 92vw);
-    }
-
-    .MebelLi {
-        font-size: 18px;
-        letter-spacing: 4px;
-    }
-
-    .MebelLi::after {
-        width: 90px;
-    }
-
-    .MebelLi.active::after {
-        width: 140px;
-    }
-
-    .MebelCarouselPanel{
-        width: min(520px, 92vw);
-    }
-
-    .embla__img{
-        height: 280px;
-    }
+  .MebelCategoryBar {
+    grid-template-columns: none;
+  }
 }
 
-.MebelTitle{
-    color: white;
-}
-
-.EmblaWrapper {
+@media (max-width: 560px) {
+  .MebelCarouselShell {
     position: relative;
-}
+    grid-template-columns: 1fr;
+  }
 
-/* The button */
-.fullscreen {
+  .MebelSideArrow {
     position: absolute;
-    top: 15px;
-    right: 14px;
-    z-index: 50;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 8px;
-}
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-.MebelCarouselPanel.isFullscreen {
-    position: absolute;
-    top: 90px;
-    width: 85%;
-    height: 80vh;
-    transition: width 500ms ease, transform 250ms ease;
-}
+  .MebelSideArrow.left {
+    left: 10px;
+  }
 
-.Mebel.isFullscreen {
-    display:none;
-}
+  .MebelSideArrow.right {
+    right: 10px;
+  }
 
-.MebelCarouselPanel.isFullscreen .embla__img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 14px;
-}
-.MebelCarouselPanel.isFullscreen .embla__slide {
-    flex: 0 0 110%;
-    min-width: 0px;
-}
+  .MebelCarouselGrid {
+    width: fit-content;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+  }
 
+  .MebelProjectCard {
+    width: min(82vw, 300px);
+    height: clamp(230px, 62vw, 270px);
+  }
 
+  .MebelHeroTitle {
+    font-size: clamp(44px, 14vw, 64px);
+  }
+}

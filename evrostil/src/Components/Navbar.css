@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
 .stick{
     position: sticky;
     width: 100%;
@@ -20,10 +22,54 @@
     position: absolute;
     top: 0px;
     width: 100%;
+    font-family: 'Montserrat', Arial, sans-serif;
     background: transparent;
+    box-shadow: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.mobileMenuButton {
+    display: none;
+}
+
+.navbar a,
+.navbar img {
+    -webkit-user-drag: none;
+}
+
+.navbar.animate-on-load {
     animation: slideDown 0.8s ease-out 3s;
     animation-fill-mode: backwards;
-    transition: background-color 0.3s ease;
+}
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.42);
+    backdrop-filter: blur(3px);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.navbar::after {
+    content: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -28px;
+    height: 28px;
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.24) 0%, rgba(5, 5, 5, 0) 100%);
+    filter: blur(1px);
+    mask-image: linear-gradient(to bottom, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .navbar-items{
@@ -39,27 +85,14 @@
     gap:40px;
     font-size:18px;
     padding:10px;
-    font-family: "Book Antiqua";
+    font-family: 'Montserrat', Arial, sans-serif;
     transition: all 0.3s ease;
 }
 
-.logo{
-    display: inline-block;
-    justify-content: center;
-}
-
-.logo img{
-    position: absolute;
-    top: 10px;
-    left: 90px;
-    width:100px;
-    height:auto;
-    padding:10px;
-}
-
 .navbar-container {
+    height:80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-be7tween;
     align-items: center;
     width: 100%;
 }
@@ -78,8 +111,8 @@
     color: inherit;
     text-decoration: none;
     display: inline-block;
-    padding-bottom: 15px;
-    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    border-bottom: 0;
     transition: all 0.3s ease;
 }
 
@@ -90,38 +123,34 @@
     scale:1.25;
     font-weight:bold;
     transition-duration:0.2s;
-    border-bottom:1px solid #514f4f;
+    border-bottom: 0;
 }
 
 /* active route */
 .navbar-items ul li a.navlink.active{
     font-weight:bold;
-    border-bottom:2px solid black;
+    border-bottom: 0;
+    font-size:20px;
 }
 
-/* Dark mode */
-.navbar.dark-mode{
-    background-color: transparent;
-}
-
-.navbar.dark-mode .navbar-items ul li a.navlink{
+.navbar .navbar-items ul li a.navlink{
     color: white;
-    border-bottom:1px solid white;
+    border-bottom: 0;
 }
 
-.navbar.dark-mode .navbar-items ul li:hover a.navlink{
+.navbar .navbar-items ul li:hover a.navlink{
     color: #ffffff;
-    border-bottom:2px solid white;
+    border-bottom: 0;
 }
 
-.navbar.dark-mode .navbar-items ul li a.navlink.active{
-    border-bottom:2px solid white;
+.navbar .navbar-items ul li a.navlink.active{
+    border-bottom: 0;
 }
 
 .dali{
     position: absolute;
     top:30px;
-    right:100px;
+    right:120px;
     display: flex;
     gap:20px;
 }
@@ -146,7 +175,7 @@
 .izvest{
     padding:4px;
     font-weight: bold;
-    font-family: "Book Antiqua";
+    font-family: 'Montserrat', Arial, sans-serif;
     display: inline-block;
     white-space: nowrap;
 }
@@ -180,34 +209,189 @@
     transition-duration:0.2s;
 }
 
-/* SCROLLED STATE - Dark background when away from hero */
-.navbar.scrolled,
-.navbar.dark-mode.scrolled {
-    background-color: rgba(25, 23, 23, 0.65) !important;
-    transition: background-color 0.3s ease;
+.navbar.scrolled {
+    background-color: transparent !important;
+    box-shadow: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* White text when scrolled */
+.navbar.scrolled::before {
+    opacity: 1;
+}
+
+.navbar.scrolled::after {
+    opacity: 1;
+}
+
 .navbar.scrolled .navbar-items ul li a.navlink {
     color: white !important;
-    border-bottom: 1px solid white !important;
+    border-bottom: 0 !important;
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled .navbar-items ul li:hover a.navlink {
     color: #ffffff !important;
-    border-bottom: 2px solid white !important;
+    border-bottom: 0 !important;
 }
 
 .navbar.scrolled .navbar-items ul li a.navlink.active{
-    border-bottom: 2px solid white !important;
+    border-bottom: 0 !important;
 }
 
-/* NOT scrolled - ensure transparent */
-.navbar:not(.scrolled) {
-    background-color: transparent !important;
+.navbar.home-hero {
+    box-shadow: none;
 }
 
-.navbar.dark-mode:not(.scrolled) {
-    background-color: transparent !important;
+@media (max-width: 1000px) {
+    .navbar.animate-on-load {
+        animation-delay: 0.5s;
+    }
+
+    .navbar-container {
+        justify-content: center;
+        padding: 0 12px;
+    }
+
+    .navbar-items > ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 24px;
+        font-size: 16px;
+        margin: 0;
+        padding: 14px 10px;
+    }
+
+    .navbar-items ul li a.navlink {
+        padding-bottom: 8px;
+    }
+
+    .navbar-items ul li a.navlink.active {
+        font-size: 17px;
+    }
+
+    .izvest-container {
+        top: 86px;
+    }
 }
+
+@media (max-width: 1200px) {
+    .stick {
+        height: 0;
+    }
+
+    .navbar,
+    .navbar.scrolled {
+        background-color: transparent !important;
+        overflow: visible;
+    }
+
+    .navbar::before,
+    .navbar.scrolled::before {
+        background: transparent !important;
+        filter: none;
+        transform: none;
+        opacity: 0;
+        height: 82px;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .navbar-container {
+        min-height: 82px;
+        justify-content: center;
+        padding: 0 14px;
+        position: relative;
+    }
+
+    .mobileMenuButton {
+        position: absolute;
+        left: 14px;
+        top: 22px;
+        z-index: 1002;
+        width: 44px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0;
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.48);
+        cursor: pointer;
+    }
+
+    .mobileMenuButton span {
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: #ffffff;
+        transition: transform 0.24s ease, opacity 0.24s ease;
+    }
+
+    .navbar.mobile-open .mobileMenuButton span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar.mobile-open .mobileMenuButton span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.mobile-open .mobileMenuButton span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar-items {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .navbar.mobile-open .navbar-items {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .navbar-items > ul {
+        width: min(320px, calc(100vw - 28px));
+        margin: 0 0 0 0;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        background: rgba(5, 5, 5, 0.94);
+        border: 1px solid var(--accent-color);
+        border-radius: 10px;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+    }
+
+    .navbar-items ul li a.navlink {
+        width: 100%;
+        padding: 11px 10px;
+        border-bottom-width: 0 !important;
+        border-radius: 7px;
+    }
+
+    .navbar-items ul li:hover a.navlink {
+        scale: 1;
+        background: rgb(49, 49, 49);
+    }
+
+    .navbar-items ul li a.navlink.active {
+        font-size: 14px;
+        border-bottom-width: 0 !important;
+        background: rgb(49, 49, 49);
+    }
+}
+  

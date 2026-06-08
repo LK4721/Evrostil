@@ -1,0 +1,595 @@
+body{
+    background:
+    linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.86)),
+    url("../sliki/blackBrick.webp") fixed center / cover;
+}
+
+.MaterijaliWrapper {
+  min-height: fit-content;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* HERO */
+
+.MaterijaliHero {
+  position: relative;
+  height: 60vh;
+  min-height: 460px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MaterijaliHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../public/Materijali/hero-materials.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  z-index: 1;
+}
+
+.MaterijaliHero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.18) 45%,
+      rgba(0, 0, 0, 0.78)
+    ),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.38),
+      transparent 38%,
+      rgba(0, 0, 0, 0.35)
+    );
+  z-index: 2;
+}
+
+.MaterijaliHeroText {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 24px;
+  margin-top: 70px;
+}
+
+.MaterijaliHeroEyebrow {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.84);
+  text-transform: uppercase;
+}
+
+.MaterijaliHeroTitle {
+  margin: 0;
+  font-size: clamp(54px, 7vw, 118px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+}
+
+.MaterijaliHeroText p {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: clamp(15px, 1.5vw, 22px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.8);
+}
+/* CATEGORY BAR */
+
+.MaterijaliCategoryCarousel {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 58px;
+  align-items: stretch;
+  width: 100%;
+  background: rgba(6, 6, 6, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.MaterijaliCategoryBar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.MaterijaliCategoryArrow {
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.MaterijaliCategoryArrow:last-child {
+  border-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.MaterijaliCategoryArrow:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.MaterijaliCategoryBtn {
+  min-width: 0;
+  padding: 22px 16px;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.MaterijaliCategoryBtn:last-child {
+  border-right: 0;
+}
+
+.MaterijaliCategoryBtn::after {
+  content: none;
+}
+
+.MaterijaliCategoryBtn:hover,
+.MaterijaliCategoryBtn.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.MaterijaliCategoryTitle {
+  display: block;
+  line-height: 1.2;
+}
+
+/* CONTENT */
+
+.MaterijaliContent {
+  padding: 72px 4vw 100px;
+  background: url("../sliki/blackBrick.webp") center / cover no-repeat;
+}
+
+.MaterijaliCarouselHeader {
+  width: min(1480px, 100%);
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.MaterijaliCarouselHeader span {
+  display: block;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.MaterijaliCarouselHeader h2 {
+  margin: 8px 0 0;
+  color: #fff;
+  font-size: clamp(28px, 3vw, 46px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.MaterijaliCarouselControls span {
+  min-width: 78px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+/* FILTER BAR */
+
+.MaterijaliFilterBar {
+  width: min(1480px, 100%);
+  margin: 0px auto 17px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.MaterijaliFilterBar button {
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.MaterijaliFilterBar button:hover,
+.MaterijaliFilterBar button.active {
+  color: #111;
+  background: #fff;
+  border-color: #fff;
+}
+
+/* CAROUSEL */
+
+.MaterijaliCarouselShell {
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  gap: 18px;
+}
+
+.MaterijaliCarouselGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.MaterijaliSideArrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(0, 0, 0, 0.42);
+  color: #fff;
+  font-size: 46px;
+  line-height: 0.75;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.MaterijaliSideArrow:hover {
+  background: #fff;
+  color: #111;
+  transform: scale(1.06);
+}
+
+.MaterijaliProjectCard {
+  position: relative;
+  height: 310px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.3s ease;
+}
+
+.MaterijaliProjectCard::after {
+  content: "ПРЕГЛЕД";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.28s ease;
+}
+
+.MaterijaliProjectCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  filter: brightness(0.92) contrast(1.03);
+  transition: 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MaterijaliProjectCard:hover {
+  transform: translateY(-6px);
+}
+
+.MaterijaliProjectCard:hover img {
+  transform: scale(1.035);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.52);
+  filter: brightness(1) contrast(1.06);
+}
+
+.MaterijaliProjectCard:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIGHTBOX */
+
+.MaterijaliLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 42px;
+}
+
+.MaterijaliLightbox img {
+  max-width: 88vw;
+  max-height: 86vh;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+}
+
+.MaterijaliLightboxClose {
+  position: fixed;
+  top: 26px;
+  right: 34px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 100000;
+}
+
+.MaterijaliLightboxClose:hover {
+  background: #fff;
+  color: #111;
+}
+
+.MaterijaliLightboxArrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 48px;
+  line-height: 0.8;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 100000;
+}
+
+.MaterijaliLightboxArrow:hover {
+  background: #fff;
+  color: #111;
+}
+
+.MaterijaliLightboxArrow.prev {
+  left: 34px;
+}
+
+.MaterijaliLightboxArrow.next {
+  right: 34px;
+}
+
+.MaterijaliLightboxCounter {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(0, 0, 0, 0.42);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1250px) {
+  .MaterijaliCategoryBar {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .MaterijaliCarouselGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .MaterijaliCarouselShell {
+    grid-template-columns: 56px 1fr 56px;
+    gap: 14px;
+  }
+
+  .MaterijaliProjectCard {
+    height: 250px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 950px) {
+  .MaterijaliHero {
+    height: clamp(330px, 54vw, 460px);
+    min-height: 380px;
+  }
+
+  .MaterijaliHeroTitle {
+    font-size: clamp(42px, 11vw, 72px);
+  }
+
+  .MaterijaliCategoryCarousel {
+    grid-template-columns: 1fr;
+    background: rgba(6, 6, 6, 0.92);
+  }
+
+  .MaterijaliCategoryBar {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .MaterijaliCategoryBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .MaterijaliCategoryBtn {
+    flex: 0 0 clamp(170px, 42vw, 260px);
+    scroll-snap-align: start;
+  }
+
+  .MaterijaliCategoryArrow {
+    display: none;
+  }
+
+  .MaterijaliContent {
+    padding: 48px 18px 78px;
+  }
+
+  .MaterijaliCarouselHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .MaterijaliCarouselShell {
+    grid-template-columns: 48px 1fr 48px;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .MaterijaliSideArrow {
+    width: 44px;
+    height: 44px;
+    font-size: 36px;
+  }
+
+  .MaterijaliCarouselGrid {
+    width: fit-content;
+    max-width: 100%;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .MaterijaliProjectCard {
+    width: clamp(210px, 38vw, 300px);
+    height: clamp(220px, 34vw, 280px);
+    padding: 0;
+  }
+
+  .MaterijaliProjectCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 560px) {
+  .MaterijaliHero {
+    height: clamp(300px, 56vw, 380px);
+    min-height: 330px;
+  }
+
+  .MaterijaliCategoryBar {
+    grid-template-columns: none;
+  }
+
+  .MaterijaliCarouselShell {
+    position: relative;
+    grid-template-columns: 1fr;
+  }
+
+  .MaterijaliSideArrow {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .MaterijaliSideArrow.left {
+    left: 10px;
+  }
+
+  .MaterijaliSideArrow.right {
+    right: 10px;
+  }
+
+  .MaterijaliCarouselGrid {
+    width: fit-content;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+  }
+
+  .MaterijaliProjectCard {
+    width: min(82vw, 300px);
+    height: clamp(230px, 62vw, 270px);
+    padding: 0;
+  }
+
+  .MaterijaliLightbox {
+    padding: 20px;
+  }
+
+  .MaterijaliLightboxArrow {
+    width: 46px;
+    height: 46px;
+    font-size: 38px;
+  }
+
+  .MaterijaliLightboxArrow.prev {
+    left: 14px;
+  }
+
+  .MaterijaliLightboxArrow.next {
+    right: 14px;
+  }
+
+  .MaterijaliLightboxClose {
+    top: 16px;
+    right: 16px;
+  }
+}

@@ -1,93 +1,151 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import logodark from "../logos/logodark.png";
-import logolight from "../logos/logolight.png";
+import React, { useState, useEffect, useLayoutEffect, useCallback } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { resetScrollPosition } from "../utils/scrollToTop";
 import "./Navbar.css";
 
-function Navbar() {
-    const [darkMode, setDarkMode] = useState(true);
-    const [scrolled, setScrolled] = useState(false);
+let navbarIntroPlayed = false;
 
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle("dark-mode");
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const [playIntroAnimation, setPlayIntroAnimation] = useState(
+    () => location.pathname === "/" && !navbarIntroPlayed,
+  );
+
+  const scrollToTop = useCallback((smooth = false) => {
+    resetScrollPosition(smooth);
+  }, []);
+
+  const handleNavClick = useCallback(
+    (targetPath) => {
+      setMobileMenuOpen(false);
+
+      if (location.pathname === "/" && targetPath === "/") {
+        scrollToTop(true);
+      }
+    },
+    [location.pathname, scrollToTop],
+  );
+
+  useLayoutEffect(() => {
+    setMobileMenuOpen(false);
+
+    const heroSection = document.querySelector(".hero");
+    if (!heroSection || location.pathname !== "/") {
+      setScrolled(true);
+      return;
+    }
+
+    setScrolled(window.scrollY > heroSection.offsetHeight - 120);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const heroSection = document.querySelector(".hero");
+    const homeScroller = document.querySelector(".Home");
+
+    if (!heroSection) {
+      setScrolled(true);
+      return;
+    }
+
+    const updateScrolled = () => {
+      const scrollTop = homeScroller ? homeScroller.scrollTop : window.scrollY;
+      setScrolled(scrollTop > heroSection.offsetHeight - 120);
     };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setScrolled(!entry.isIntersecting),
-            { threshold: 0.5 }
-        );
+    updateScrolled();
 
-        const heroSection = document.querySelector(".hero");
-        if (heroSection) observer.observe(heroSection);
+    const scrollTarget = homeScroller || window;
+    scrollTarget.addEventListener("scroll", updateScrolled, { passive: true });
+    window.addEventListener("resize", updateScrolled);
 
-        return () => {
-            if (heroSection) observer.unobserve(heroSection);
-        };
-    }, []);
+    return () => {
+      scrollTarget.removeEventListener("scroll", updateScrolled);
+      window.removeEventListener("resize", updateScrolled);
+    };
+  }, [location.pathname]);
 
-    const navbarClasses = `navbar ${darkMode ? "dark-mode" : ""} ${
-        scrolled ? "scrolled" : ""
-    }`;
+  const handleIntroAnimationEnd = (event) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
 
-    const linkClass = ({ isActive }) =>
-        isActive ? "navlink active" : "navlink";
+    navbarIntroPlayed = true;
+    setPlayIntroAnimation(false);
+  };
 
-    return (
-        <div className="stick">
-            <nav className={navbarClasses}>
-                <div className="navbar-container">
-                    <div className="logo">
-                        {/* Example logo click -> home */}
-                        {/* <NavLink to="/"><img src={darkMode ? logodark : logolight} alt="Logo" /></NavLink> */}
-                    </div>
+  const isHomeHero = location.pathname === "/" && !scrolled;
 
-                    <div className="navbar-items">
-                        <ul>
-                            <li>
-                                <NavLink to="/" className={linkClass}>
-                                    ДОМА
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/stanovi" className={linkClass}>
-                                    СТАНОВИ
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/mebel" className={linkClass}>
-                                    МЕБЕЛ
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/uslugi" className={linkClass}>
-                                    УСЛУГИ
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/galerija" className={linkClass}>
-                                    ГАЛЕРИЈА
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/za-nas" className={linkClass}>
-                                    ЗА НАС
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/kontakt" className={linkClass}>
-                                    КОНТАКТ
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+  const navbarClasses = `navbar ${playIntroAnimation ? "animate-on-load" : ""} ${
+    scrolled ? "scrolled" : ""
+  } ${isHomeHero ? "home-hero" : ""} ${mobileMenuOpen ? "mobile-open" : ""}`;
 
-                {/* your language + dark mode buttons can stay here */}
-            </nav>
+  const linkClass = ({ isActive }) => (isActive ? "navlink active" : "navlink");
+
+  return (
+    <div className="stick">
+      <nav
+        className={navbarClasses}
+        onAnimationEnd={handleIntroAnimationEnd}
+        onDragStart={(event) => event.preventDefault()}
+      >
+        <div className="navbar-container">
+          <button
+            className="mobileMenuButton"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen((open) => !open)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div className="navbar-items">
+            <ul>
+              <li>
+                <NavLink to="/" className={linkClass} onClick={() => handleNavClick("/")}>
+                  ДОМА
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/stanovi" className={linkClass} onClick={() => handleNavClick("/stanovi")}>
+                  СТАНОВИ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/mebel" className={linkClass} onClick={() => handleNavClick("/mebel")}>
+                  МЕБЕЛ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/galerija" className={linkClass} onClick={() => handleNavClick("/galerija")}>
+                  МАТЕРИЈАЛИ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/uslugi" className={linkClass} onClick={() => handleNavClick("/uslugi")}>
+                  УСЛУГИ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/za-nas" className={linkClass} onClick={() => handleNavClick("/za-nas")}>
+                  ЗА НАС
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/kontakt" className={linkClass} onClick={() => handleNavClick("/kontakt")}>
+                  КОНТАКТ
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
-    );
+      </nav>
+    </div>
+  );
 }
 
 export default Navbar;

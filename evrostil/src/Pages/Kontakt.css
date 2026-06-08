@@ -1,0 +1,284 @@
+.KontaktWrapper {
+    padding: 100px 64px 56px;
+    display: flex;
+    justify-content: center;
+    background: url('../sliki/blackBrick.webp') fixed center/cover;
+}
+
+.Kontakt {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) minmax(270px, 1fr) minmax(360px, 1.4fr);
+    gap: 34px;
+    align-items: start;
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 100px 44px 44px;
+    position: relative;
+    overflow: hidden;
+}
+
+.Kontakt::before,
+.Kontakt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.Kontakt::before {
+    background: url('../../public/Uslugi/black-sand.webp') center / cover no-repeat;
+    filter: blur(1px);
+    transform: scale(1.05);
+    z-index: 0;
+}
+
+.Kontakt::after {
+    background: linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.48));
+    z-index: 1;
+}
+
+.contactus {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    left: 44px;
+    top: 26px;
+    margin: 0;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.Kontakt_l,
+.Kontakt_r {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-width: 0;
+}
+
+.Kontakt_l {
+    display: grid;
+    gap: 18px;
+}
+
+.Kontakt_r {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    padding-top:30px;
+}
+
+.Kontakt .contact-subsection {
+    width: auto;
+    margin: 0;
+    padding: 18px;
+    border-left: 3px solid var(--accent-color);
+    background: #191717;
+    border-radius: 0 8px 8px 0;
+}
+
+.Kontakt .contact-subsection h4 {
+    margin: 0 0 14px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.Kontakt .contact-item {
+    width: auto;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #b8b8b8;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.Kontakt .contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.Kontakt .contact-item i {
+    color: white;
+    font-size: 16px;
+    width: 20px;
+    margin-top: 3px;
+    flex: 0 0 20px;
+}
+
+.Kontakt .contact-item a {
+    color: #b8b8b8;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.3s;
+}
+
+.Kontakt .contact-item:hover a {
+    color: white;
+}
+
+.Kontakt .rightKontakt {
+    margin: 0;
+    padding: 0;
+}
+
+.Kontakt .rightKontakt .contact-item {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.Kontakt .rightKontakt .contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.kontaktLogo img {
+    width: 108px;
+    margin-top: 2px;
+    margin-right:15px;
+}
+
+.kontaktSocials {
+    display: flex;
+    justify-content: center;
+}
+
+.kontaktSocials a{
+    margin:auto;
+    margin-right: 0px;
+    margin-left: 5px;
+}
+
+.Kontakt .mapWrapper {
+    width: 100%;
+    margin: 0;
+    align-self: stretch;
+}
+
+.kontaktMap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+}
+
+.kontaktMap .mapWrapper {
+    width: 100%;
+    max-width: none;
+}
+
+.Kontakt .map {
+    min-height: 420px;
+    height: 100%;
+}
+
+@media (max-width: 1150px) {
+  .Kontakt {
+    grid-template-columns: minmax(240px, 1fr) minmax(260px, 1fr);
+    padding: 92px 28px 35px;
+    border-radius: 32px;
+  }
+
+  .Kontakt_l {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .Kontakt_r {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .kontaktMap {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+  }
+
+  .kontaktLogo {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Kontakt .map {
+    height: 420px;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 700px) {
+  .KontaktWrapper {
+    padding: 76px 16px 35px;
+  }
+
+  .Kontakt {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 70px 18px 24px;
+    border-radius: 22px;
+  }
+
+  .contactus {
+    left: 18px;
+    top: 22px;
+    font-size: 28px;
+  }
+
+  .kontaktMap {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+  }
+
+  .Kontakt_r {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .Kontakt_l {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+  }
+
+  .kontaktLogo {
+    grid-column: 1;
+    grid-row: 4;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Kontakt .map {
+    width: 100%;
+    height: 340px;
+    min-height: 340px;
+  }
+
+  .Kontakt .contact-subsection {
+    padding: 16px;
+  }
+
+  .kontaktLogo img {
+    width: 86px;
+  }
+
+  .kontaktLogo {
+    display: flex;
+  }
+}
+
+.kontaktMap .leaflet-tile {
+    filter: brightness(3.65) contrast(1.6);
+}

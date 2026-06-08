@@ -1,21 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
 .footer {
+    position: relative;
     min-height: 30vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    scroll-snap-align: end;
     z-index: 100;
+    font-family: 'Montserrat', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.footer-bg,
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.footer-bg {
+    z-index: 0;
+    background-color: #111;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-overlay {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.footer .top,
+.footer .footer-bottom {
+    position: relative;
+    z-index: 2;
 }
 
 .top{
     display:flex;
     color:white;
     height:fit-content;
-    border-top:2px solid #616060;
-    padding-bottom: 30px;
-
+    border-top:2px solid var(--accent-color);
 }
 .top-left{
     margin-left: 100px;
-    margin-top:50px;
+    margin-top:25px;
     width:25%;
     border-right:1px solid rgb(230, 230, 230, 0.3);
 }
@@ -24,14 +52,21 @@
 }
 .top-right{
     display:flex;
+    align-items: flex-start;
     gap:80px;
     margin-top:10px;
     margin-left:50px;
     padding-left:50px;
 }
+.links,
+.kontakt {
+    align-self: flex-start;
+}
+
 .links h5, .kontakt h5{
     color: #ffffff;
     font-size: 20px;
+    margin-top: 0;
     margin-bottom: 30px;
     font-weight: 700;
     text-transform: uppercase;
@@ -48,7 +83,7 @@
     left: 0;
     width: 100%; /* Full width or adjust to preference */
     height: 3px;
-    background: linear-gradient(to right, #787677 0%, #000000 100%);
+    background: linear-gradient(to right, var(--accent-color) 0%, #000000 100%);
 }
 
 .links ul li, .kontakt ul li{
@@ -64,13 +99,15 @@
 .socials {
     display: flex;
     gap: 15px;
-    margin-top: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .socials a {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, #787677, black);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%; /* Го прави кружен */
     display: flex;
     align-items: center;
@@ -78,34 +115,18 @@
     text-decoration: none;
     font-size: 20px;
     color: #cac9ca; /* Црвена боја */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
     position: relative;
 }
 
 /* Ефект при ховер */
-.socials a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: #787677; /* Црвена позадина */
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.4s;
-    z-index: -1;
-}
-
-.socials a:hover::before {
-    opacity: 1;
-    transform: scale(1);
-}
-
 .socials a:hover {
-    border-color: #787677;
+    background: rgba(var(--accent-rgb), 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
     color: white; /* Бела икона на црвена позадина */
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 5px 15px white;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.34), 0 0 0 4px rgba(255, 255, 255, 0.05);
 }
 
 .links ul {
@@ -113,39 +134,55 @@
     padding: 0;
 }
 
-.links ul li {
+.footer .links ul li {
     margin-bottom: 18px;
+    position: relative;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.links ul li a {
+.footer .links ul li a {
     color: #b8b8b8;
     text-decoration: none;
     font-size: 17px;
-    transition: all 0.3s;
+    transition: color 0.28s ease;
     position: relative;
-    padding-left: 25px;
+    padding-left: 25px !important;
     display: inline-block;
 }
 
+.footer .links ul li a:hover {
+    padding-left: 25px !important;
+    transform: none !important;
+}
+
+.footer .links ul li a::before,
+.footer .links ul li a:hover::before {
+    content: none !important;
+}
+
 /* Лева стрелка (секогаш видлива) */
-.links ul li a::before {
+.footer .links ul li::before {
     content: '▸';
     position: absolute;
-    left: 0;
+    left: -10px;
+    top: 0;
     color: white;
     font-size: 18px;
-    transition: all 0.3s;
+    transition: color 0.28s ease;
+    pointer-events: none;
 }
 
 /* При hover - линкот се поместува и стрелката се движи */
-.links ul li a:hover {
-    color: white;
-    padding-left: 35px;
+.footer .links ul li:hover {
+    transform: translateX(6px);
 }
 
-.links ul li a:hover::before {
-    color: #787677;
-    left: 5px;
+.footer .links ul li:hover a {
+    color: white;
+}
+
+.footer .links ul li:hover::before {
+    color: var(--accent-color);
 }
 
 
@@ -154,6 +191,7 @@
 .kontakt h5 {
     color: #ffffff;
     font-size: 20px;
+    margin-top: 0;
     margin-bottom: 25px;
     font-weight: 700;
     text-transform: uppercase;
@@ -169,13 +207,13 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(to right, #787677 0%, #000000 100%);
+    background: linear-gradient(to right, var(--accent-color) 0%, #000000 100%);
 }
 
 .contact-subsection {
     padding:2px;
     margin-bottom:10px;
-    border-left: 3px solid #787677;
+    border-left: 3px solid var(--accent-color);
     background: #191717;
     border-radius: 0 8px 8px 0;
 }
@@ -208,14 +246,21 @@
 }
 
 .contact-item a {
+    font-size: 14px;
     color: #b8b8b8;
     text-decoration: none;
     transition: color 0.3s;
 }
 
+.contact-item a[href^="tel:"],
+.contact-item span {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-variant-numeric: lining-nums;
+}
+
 .contact-item:hover {
     color: #ffffff;
-    padding-left: 5px;
+    transform: translateX(5px);
 }
 
 .contact-item:hover a {
@@ -233,7 +278,7 @@
 }
 
 .rightKontakt{
-    margin-top:120px;
+    margin-top:85px;
     margin-left:50px;
 }
 .contact-item{
@@ -250,6 +295,91 @@
     width:65%;
 }
 
-body{
-    font-family: Cambria
+.footer{
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+@media (max-width: 1050px) {
+    .top {
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 40px 32px;
+    }
+
+    .top-left {
+        width: 100%;
+        margin: 0;
+        padding-bottom: 26px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(230, 230, 230, 0.3);
+    }
+
+    .top-left p {
+        width: min(680px, 100%);
+    }
+
+    .logofoot {
+        width: min(260px, 70%);
+    }
+
+    .top-right {
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
+        gap: 35px;
+        flex-wrap: wrap;
+    }
+
+    .rightKontakt {
+        margin-top: 75px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .footer {
+        min-height: auto;
+    }
+
+    .top {
+        display: block;
+        padding: 34px 22px;
+    }
+
+    .top-right,
+    .kontakt {
+        display: block;
+    }
+
+    .top-right {
+        margin-top: 28px;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .links h5,
+    .kontakt h5 {
+        width: 100%;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .contact-subsection {
+        width: 100%;
+    }
+
+    .contact-item {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .rightKontakt {
+        margin: 25px 0 0;
+    }
+
+    .socials {
+        flex-wrap: wrap;
+    }
 }

@@ -1,19 +1,21 @@
 import React from 'react';
-import logo from '../logos/logodark new.png'
+import logo from '../logos/logo-main.webp'
 import './footer.css'
 
 function Footer() {
     return (
         <div className="footer">
+            <div className="footer-bg" aria-hidden="true" />
+            <div className="footer-overlay" aria-hidden="true" />
             <div className="top">
                 <div className="top-left">
-                    <img class="logofoot" src={logo}/>
+                    <img className="logofoot" src={logo} alt="Евростил-М" loading="lazy" decoding="async"/>
                     <p>Квалитетни станови и мебел со стил. Водечка компанија во Струмица со повеќе од 20 години искуство во изградба и производство на мебел по нарачка.</p>
                     <div className="socials">
-                        <a href="https://facebook.com/evrostilm" aria-label="Facebook">
+                        <a href="https://facebook.com/evrostilm" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <i className="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com/evrostilm" aria-label="Instagram">
+                        <a href="https://www.instagram.com/evrostil.m/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i className="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -25,8 +27,8 @@ function Footer() {
                             <li><a href="/">Дома</a></li>
                             <li><a href="/stanovi">Станови</a></li>
                             <li><a href="/mebel">Мебел</a></li>
+                            <li><a href="/materijali">Материјали</a></li>
                             <li><a href="/uslugi">Услуги</a></li>
-                            <li><a href="/galerija">Галерија</a></li>
                             <li><a href="/za-nas">За Нас</a></li>
                         </ul>
                     </div>
@@ -61,7 +63,7 @@ function Footer() {
                         </div>
 
                         <div className="rightKontakt">
-                            <div className="contact-item address">
+                            <div className="contact-item">
                                 <i className="fas fa-map-marker-alt"></i>
                                 <span>Населба Софилар, Струмица, Македонија</span>
                             </div>
@@ -79,6 +81,9 @@ function Footer() {
                         </div>
                     </div>
                 </div>
+                <div className="footer-bottom">
+                <p>© 2026 ЕВРОСТИЛ-М • СИТЕ ПРАВА ЗАДРЖАНИ</p>
+            </div>
         </div>
     )
 }

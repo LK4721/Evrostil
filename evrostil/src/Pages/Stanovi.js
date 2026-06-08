@@ -1,77 +1,282 @@
-import React from 'react'
-import './Stanovi.css'
+import React, { useRef, useState } from "react";
+import "./Stanovi.css";
 import Footer from "../Components/footer";
-import kompleks1 from "../sliki/zgrada123.png";
-import kompleks2 from "../sliki/zgrada45.png";
-import astra from "../sliki/astra.png";
-import coverPhoto from "../logos/coverphot.png";
+import kompleks1 from "../sliki/zgrada123.webp";
+import kompleks2 from "../sliki/zgrada45.webp";
+import astra from "../sliki/astra.webp";
+import coverPhoto from "../logos/coverphot.webp";
 
 import AstraFlipBook from "../Components/FlipBookCarousel.js";
 
-
 function Stanovi() {
-    return (
-        <div className="StanoviWrapper">
-            <div className="Stanovi">
-            <div className="mainStanP">
-                <div className="Astra">
-                    <div className="pageTitle2">ASTRA RESIDENCE</div>
+  const astraSlides = [
+    { src: astra, alt: "ASTRA RESIDENCE cover" },
+    { src: coverPhoto, alt: "ASTRA RESIDENCE" },
+    ...Array.from({ length: 14 }, (_, index) => ({
+      src: `/bosura/slika${index + 1}.webp`,
+      alt: `Astra page ${index + 1}`,
+    })),
+  ];
 
-                    <div className="flipbook-container">
-                        <AstraFlipBook
-                            coverImg={astra} // starting page = astra image
-                            pages={[
-                                {
-                                    type: "img", src: coverPhoto, alt: "ASTRA RESIDENCE",
-                                },
-                                { type: "img", src: "/bosura/slika1.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika2.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika3.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika4.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika5.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika6.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika7.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika8.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika9.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika10.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika11.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika12.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika13.jpg", alt: "Astra page 2" },
-                                { type: "img", src: "/bosura/slika14.jpg", alt: "Astra page 2" },
-                            ]}
-                        />
+  const [astraSlideIndex, setAstraSlideIndex] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-                        <div className="flipbook-desc">
-                            <div className='glaven'>
-                                Откријте го <span>НОВИОТ</span><br/> Astra Residence комплекс од Евростил-М.
-                            </div>
+  const astraBookRef = useRef(null);
+  const videoRef = useRef(null);
 
-                            <div className="brosura-izvest">
-                                Кликнете на сликата и отворете ја брошурата.
-                            </div>
-                        </div>
+  const showPrevAstraSlide = () => {
+    setAstraSlideIndex((current) =>
+      current === 0 ? astraSlides.length - 1 : current - 1
+    );
+  };
+
+  const showNextAstraSlide = () => {
+    setAstraSlideIndex((current) =>
+      current === astraSlides.length - 1 ? 0 : current + 1
+    );
+  };
+
+  const playAstraVideo = () => {
+    if (!videoRef.current) return;
+
+    videoRef.current.play();
+    setIsVideoPlaying(true);
+  };
+
+  return (
+    <div className="StanoviWrapper">
+      <div className="Stanovi">
+        <div className="mainStanP">
+          <div className="Astra">
+            <section className="astraHero">
+              <div className="astraHeroTop">
+                <div className="astraHeroCopy">
+                  <span>INTRODUCING</span>
+
+                  <h1>
+                    ASTRA
+                    <br />
+                    {" "}
+                    RESIDENCE
+                  </h1>
+
+                  <p>
+                    Современ станбен комплекс, создаден за семејства кои
+                    вреднуваат квалитет, удобност и долгорочна вредност.
+                  </p>
+
+                  <div className="astraHeroCards">
+                    <div className="astraHeroDiscount">
+                      <div className="astraHeroIcon astraHeroIconDiscount">
+                        <img src="/Icons/popust.webp" alt="Попуст икона" />
+                      </div>
+
+                      <div>
+                        <strong>20% попуст на мебел</strong>
+                        <p>за сите купувачи на станови</p>
+                      </div>
                     </div>
+
+                    <a href="#catalog" className="astraHeroCard">
+                      <span>
+                        <img src="/Icons/katalog.webp" alt="Каталог икона" />
+                      </span>
+                      Каталог
+                    </a>
+
+                    <button
+                      type="button"
+                      className="astraHeroCard"
+                      onClick={playAstraVideo}
+                    >
+                      <span>
+                        <img src="/Icons/play.webp" alt="Видео икона" />
+                      </span>
+                      Видео
+                    </button>
+                  </div>
                 </div>
-                {/*<div className="pageTitle2">Евростил-М Проекти</div>*/}
-                <div className="DonePro">
-                <div className="sectiontitle">Готови Проекти</div>
-                <div className="projectWrap">
-                    <div className="project linkmebel">
-                        <img src={kompleks1} alt="kompleks" />
-                        <div className="label">Комплекс 1</div>
-                        <div className="Sold">Продадено</div>
-                    </div>
-                    <div className="project linkmebel">
-                        <img src={kompleks2} alt="kompleks" />
-                        <div className="label">Комплекс 2</div>
-                        <div className="Sold">Продадено</div>
-                    </div>
+
+                <div className="astraHeroImage">
+                  <video
+                    ref={videoRef}
+                    src="/Uslugi/astra-residence.mp4"
+                    controls
+                    playsInline
+                    poster="/Icons/astraVideo.webp"
+                    onPlay={() => setIsVideoPlaying(true)}
+                    onPause={() => setIsVideoPlaying(false)}
+                    onEnded={() => setIsVideoPlaying(false)}
+                  />
+
+                  {!isVideoPlaying && (
+                    <button
+                      type="button"
+                      className="astraHeroPlay"
+                      onClick={playAstraVideo}
+                      aria-label="Погледни видео"
+                    >
+                      <span>▶</span>
+                    </button>
+                  )}
                 </div>
-                </div>
+              </div>
+            </section>
+
+            <div className="catalogHeading" id="catalog">
+              <h2>Погледни каталог</h2>
+
+              <div className="catalogHeadingDivider" aria-hidden="true">
+                <span></span>
+                <b>
+                  <svg viewBox="0 0 24 24">
+                    <path d="m7 8 5 5 5-5" />
+                    <path d="m7 13 5 5 5-5" />
+                  </svg>
+                </b>
+                <span></span>
+              </div>
             </div>
+
+            <div className="flipbook-container">
+              <div className="astraFlipbookOnly">
+                <button
+                  className="astraBookArrow astraBookArrowPrev"
+                  type="button"
+                  onClick={() => astraBookRef.current?.prev()}
+                  aria-label="Previous brochure page"
+                >
+                  ‹
+                </button>
+
+                <AstraFlipBook
+                  ref={astraBookRef}
+                  coverImg={astra}
+                  pages={astraSlides.map((slide) => ({
+                    type: "img",
+                    ...slide,
+                  }))}
+                />
+
+                <button
+                  className="astraBookArrow astraBookArrowNext"
+                  type="button"
+                  onClick={() => astraBookRef.current?.next()}
+                  aria-label="Next brochure page"
+                >
+                  ›
+                </button>
+              </div>
+
+              <div className="astraMobileCarousel">
+                <button
+                  className="astraCarouselArrow prev"
+                  type="button"
+                  onClick={showPrevAstraSlide}
+                  aria-label="Previous photo"
+                >
+                  ‹
+                </button>
+
+                <img
+                  src={astraSlides[astraSlideIndex].src}
+                  alt={astraSlides[astraSlideIndex].alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <button
+                  className="astraCarouselArrow next"
+                  type="button"
+                  onClick={showNextAstraSlide}
+                  aria-label="Next photo"
+                >
+                  ›
+                </button>
+
+                <div className="astraCarouselCount">
+                  {astraSlideIndex + 1} / {astraSlides.length}
+                </div>
+              </div>
             </div>
-            <Footer />
+
+            <section className="catalogDiscountBanner">
+              <span>Ексклузивна понуда</span>
+              <h2>20% попуст на мебел</h2>
+              <p>
+                Со секој купен стан добивате специјална понуда за мебел
+                изработен од нас.
+              </p>
+            </section>
+          </div>
+
+          <div className="DonePro" id="gotovi-proekti">
+            <div className="projectsHeader">
+              <span className="projectsEyebrow">
+                Нашето искуство, вашата доверба
+              </span>
+
+              <div className="sectiontitle">Готови Проекти</div>
+
+              <p>Досегашни станбени објекти реализирани од Евростил-М.</p>
+            </div>
+
+            <div className="projectWrap">
+              <div className="project">
+                <div className="projectImageBlock">
+                  <img
+                    src={kompleks1}
+                    alt="Комплекс 1"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <div className="projectTextBlock">
+
+                  <div className="label">Комплекс 1</div>
+
+                  <p className="projectDescription">
+                    Првиот станбен комплекс на Евростил-М во населба Карпош,
+                    Струмица, е составен од три станбени згради со практични
+                    распореди, добра изолација и квалитетна изведба.
+                  </p>
+
+                  <div className="Sold">Продадено</div>
+                </div>
+              </div>
+
+              <div className="project">
+                <div className="projectImageBlock">
+                  <img
+                    src={kompleks2}
+                    alt="Комплекс Делукс"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <div className="projectTextBlock">
+
+                  <div className="label">Комплекс Делукс</div>
+
+                  <p className="projectDescription">
+                    Современ станбено-деловен комплекс со функционални станови,
+                    деловни простории, обезбеден паркинг и внимателно планирани
+                    решенија за секојдневна удобност.
+                  </p>
+
+                  <div className="Sold">Продадено</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+
+      <Footer />
+    </div>
+  );
 }
+
 export default Stanovi;

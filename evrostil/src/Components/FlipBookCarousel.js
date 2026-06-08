@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import "./FlipBookCarousel.css";
 
@@ -14,7 +14,7 @@ const Page = React.forwardRef(function Page({ children, className = "" }, ref) {
     );
 });
 
-export default function AstraFlipBook({ coverImg, pages = [] }) {
+function AstraFlipBook({ coverImg, pages = [] }, ref) {
     const bookRef = useRef(null);
     const stageRef = useRef(null);
 
@@ -27,6 +27,7 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
 
     const lockRef = useRef(false);
     const coverResetTimer = useRef(null);
+    const autoCloseTimer = useRef(null);
 
     const pf = () => bookRef.current?.pageFlip?.();
 
@@ -142,10 +143,16 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
         if (!inst) return;
 
         const idx = inst.getCurrentPageIndex();
+        const last = inst.getPageCount() - 1;
 
         if (coverResetTimer.current) {
             clearTimeout(coverResetTimer.current);
             coverResetTimer.current = null;
+        }
+
+        if (autoCloseTimer.current) {
+            clearTimeout(autoCloseTimer.current);
+            autoCloseTimer.current = null;
         }
 
         // Only reset position when we TRULY land on cover
@@ -163,6 +170,17 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
                 }
             }, COVER_RESET_MS);
         }
+
+        if (idx >= last - 1 && !isClosed && !opening && !lockRef.current) {
+            autoCloseTimer.current = setTimeout(() => {
+                const again = pf();
+                if (!again || lockRef.current) return;
+
+                if (again.getCurrentPageIndex() >= again.getPageCount() - 2) {
+                    goCoverAnimated();
+                }
+            }, 900);
+        }
     };
 
     // Last spread → next flip closes
@@ -171,6 +189,35 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
         e.stopPropagation();
         goCoverAnimated();
     };
+
+    const goNext = () => {
+        const inst = pf();
+        if (!inst || lockRef.current) return;
+
+        if (inst.getCurrentPageIndex() === 0 && isClosed) {
+            openWithSlideThenFlip();
+            return;
+        }
+
+        if (atLastSpread) {
+            goCoverAnimated();
+            return;
+        }
+
+        inst.flipNext();
+    };
+
+    const goPrev = () => {
+        const inst = pf();
+        if (!inst || lockRef.current) return;
+        inst.flipPrev();
+    };
+
+    useImperativeHandle(ref, () => ({
+        next: goNext,
+        prev: goPrev,
+        cover: goCoverAnimated,
+    }));
 
     // Arrow keys (click book to focus)
     useEffect(() => {
@@ -214,6 +261,7 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
     useEffect(() => {
         return () => {
             if (coverResetTimer.current) clearTimeout(coverResetTimer.current);
+            if (autoCloseTimer.current) clearTimeout(autoCloseTimer.current);
         };
     }, []);
 
@@ -253,7 +301,7 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
                     {/* COVER */}
                     <Page className="hard" data-density="hard">
                         <div className="cover">
-                            <img src={coverImg} alt="Astra cover" />
+                            <img src={coverImg} alt="Astra cover" loading="lazy" decoding="async" />
                         </div>
                     </Page>
 
@@ -263,7 +311,7 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
                             return (
                                 <Page key={i}>
                                     <div className="page-img">
-                                        <img src={p.src} alt={p.alt || ""} />
+                                        <img src={p.src} alt={p.alt || ""} loading="lazy" decoding="async" />
                                     </div>
                                 </Page>
                             );
@@ -308,3 +356,5 @@ export default function AstraFlipBook({ coverImg, pages = [] }) {
         </div>
     );
 }
+
+export default React.forwardRef(AstraFlipBook);

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.Uslugi {
+    position: relative;
+    min-height: 100vh;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: white;
+    background: url('../sliki/blackBrick.webp') fixed center/cover;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+    .Uslugi {
+        background: url('../sliki/blackBrick.webp') center top / auto 720px repeat-y;
+    }
+}
+
+.Uslugi::before {
+    content: none;
+}
+
+.uslugiMain {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 94px 0 6rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Uslugi > .footer {
+    position: relative;
+    z-index: 1;
+}
+
+.uslugiIntro {
+    order: 1;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.uslugiTitle {
+    display:inline-block;
+    padding: 8px 0 14px;
+    margin: 10px auto 25px;
+    color: rgba(255,255,255,.92);
+    text-shadow: 0 10px 35px rgba(0,0,0,.85);
+    font-size: clamp(44px, 7vw, 60px);
+    position: relative;
+}
+
+.uslugiTitle::before,
+.uslugiTitle::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    width: min(760px, 92vw);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,.25), transparent);
+}
+
+.uslugiTitle::before{ top: -12px; }
+.uslugiTitle::after{ bottom: -10px; }
+
+.uslugiWrap {
+    order: 3;
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(205px, 220px));
+    gap: 18px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.uslugiSubtitle {
+    max-width: 720px;
+    margin: 0 auto 35px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+.uslugiCard {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    overflow: hidden;
+    padding: 28px 20px 26px;
+    background: rgba(7, 7, 7, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+    transition: transform 0.32s ease, border-color 0.32s ease, background-color 0.32s ease, box-shadow 0.32s ease;
+}
+
+.uslugiCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 58%;
+    height: 1px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.42);
+    opacity: 0.55;
+}
+
+.uslugiCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.26);
+    background: rgba(0, 0, 0, 0.86);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.44);
+}
+
+.uslugiIcon {
+    width: clamp(86px, 48%, 124px);
+    aspect-ratio: 1;
+    height: auto;
+    flex: 0 0 auto;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    font-size: clamp(28px, 21%, 62px);
+    box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.04);
+    transition: background-color 0.32s ease, color 0.32s ease, border-color 0.32s ease;
+}
+
+.uslugiIcon.hasImage {
+    background: #050505;
+}
+
+.uslugiIcon.hasImage img {
+    display: block;
+    width: 88%;
+    height: 88%;
+    object-fit: contain;
+    filter: invert(1) contrast(1.08);
+    mix-blend-mode: screen;
+    transition: filter 0.32s ease, mix-blend-mode 0.32s ease;
+}
+
+.uslugiCard:hover .uslugiIcon {
+    color: #050505;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+.uslugiCard:hover .uslugiIcon.hasImage {
+    background: #ffffff;
+}
+
+.uslugiCard:hover .uslugiIcon.hasImage img {
+    filter: none;
+    mix-blend-mode: multiply;
+}
+
+.uslugiCardContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+}
+
+.uslugiLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+    padding: 0;
+    color: rgba(229, 221, 221, 0.9);
+    background: transparent;
+    font-size: clamp(1rem, 1.25vw, 1.22rem);
+    font-weight: 700;
+    line-height: 1.28;
+    text-align: center;
+}
+
+.uslugiDescription {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: clamp(0.82rem, 0.9vw, 0.95rem);
+    line-height: 1.55;
+    letter-spacing: 0.015em;
+}
+
+.uslugiAction {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 30px;
+}
+
+.uslugiCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 28px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1.32rem;
+    font-weight: 800;
+    border-top: 1px solid rgba(255, 255, 255, 0.42);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+    transition: color 0.25s ease, background-color 0.25s ease, padding 0.25s ease;
+}
+
+.uslugiCta:hover,
+.uslugiCta:focus-visible {
+    color: #050505;
+    background: #ffffff;
+    padding-inline: 34px;
+    outline: none;
+}
+
+@media (max-width: 1200px) {
+    .uslugiMain {
+        padding-top: 100px;
+    }
+
+    .uslugiCard {
+        min-height: 290px;
+    }
+}
+
+@media (max-width: 700px) {
+    .uslugiMain {
+        width: min(100% - 28px, 520px);
+        padding-top: 100px;
+    }
+
+    .uslugiTitle {
+        width: min(100%, calc(100% - 14px));
+        font-size: clamp(28px, 7vw, 40px);
+        letter-spacing: 0.08em;
+    }
+
+    .uslugiCard {
+        min-height: 275px;
+        padding: 24px 16px 20px;
+    }
+
+    .uslugiCard:hover {
+        transform: none;
+    }
+
+    .uslugiIcon {
+        width: clamp(94px, 48%, 148px);
+        height: auto;
+        font-size: clamp(46px, 58%, 55px);
+    }
+
+    .uslugiLabel {
+        font-size: clamp(0.98rem, 3.2vw, 1rem);
+    }
+}
+
+@media (max-width: 460px) {
+    .uslugiWrap {
+        grid-template-columns: 1fr;
+    }
+
+    .uslugiCard {
+        min-height: 260px;
+    }
+}
