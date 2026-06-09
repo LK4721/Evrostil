@@ -34,6 +34,9 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "ie 11",
+      "safari >= 9",
+      "chrome >= 49",
       "not dead",
       "not op_mini all"
     ],

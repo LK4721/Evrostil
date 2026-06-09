@@ -457,6 +457,12 @@ const cleanSubcategoryTitle = (parentTitle, subcategoryTitle) => {
   return subcategoryTitle;
 };
 
+const getSubcategoryGallery = (subcategories) =>
+  subcategories.reduce(
+    (gallery, subcategory) => gallery.concat(subcategory.gallery),
+    [],
+  );
+
 const materials = [
   ...baseMaterials,
   {
@@ -464,9 +470,7 @@ const materials = [
     icon: "fa-solid fa-sink",
     description: "Гранитни и инокс мијалници за кујнски решенија.",
     image: mijalniciSubcategories[0]?.image,
-    gallery: mijalniciSubcategories.flatMap(
-      (subcategory) => subcategory.gallery,
-    ),
+    gallery: getSubcategoryGallery(mijalniciSubcategories),
     subcategories: mijalniciSubcategories,
   },
   {
@@ -474,7 +478,7 @@ const materials = [
     icon: "fa-solid fa-th-large",
     description: "Иверка декори од Kronospan и Kastamonu.",
     image: iverkaSubcategories[0]?.image,
-    gallery: iverkaSubcategories.flatMap((subcategory) => subcategory.gallery),
+    gallery: getSubcategoryGallery(iverkaSubcategories),
     subcategories: iverkaSubcategories,
   },
 ];
