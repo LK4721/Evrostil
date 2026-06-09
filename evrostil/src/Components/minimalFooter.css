@@ -45,15 +45,17 @@
 }
 
 /* LEFT */
-.top-left {
+.top-leftminimal {
+    flex: 0 0 25%;
     margin-left: 100px;
-    margin-top: 50px;
-    width: 400px;
-    max-width: calc(100% - 140px);
-    border-right: 1px solid rgba(255,255,255,0.2);
+    margin-top: 25px;
+    width: 25%;
+    max-width: 25%;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(230, 230, 230, 0.3);
 }
 
-.top-left p {
+.top-leftminimal p {
     width: 80%;
     line-height: 1.5;
     color: #b8b8b8;
@@ -61,6 +63,12 @@
 
 .logofoot {
     width: 65%;
+}
+
+.top-leftminimal .logofoot {
+    display: block;
+    width: min(260px, 65%);
+    height: auto;
 }
 
 /* RIGHT */
@@ -217,20 +225,21 @@
         gap: 28px;
     }
 
-    .top-left,
+    .top-leftminimal,
     .top-right {
         width: 100%;
+        max-width: 100%;
         margin: 0;
         padding: 0;
     }
 
-    .top-left {
+    .top-leftminimal {
         border-right: 0;
         border-bottom: 1px solid rgba(255,255,255,0.2);
         padding-bottom: 24px;
     }
 
-    .top-left p {
+    .top-leftminimal p {
         width: min(650px, 100%);
     }
 

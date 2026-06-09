@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../logos/logo-main.webp';
 import './minimalFooter.css';
 
-function minimalFooter() {
+function MinimalFooter() {
     return (
         <div className="footer">
             <div className="footer-bg" aria-hidden="true" />
@@ -67,4 +67,4 @@ function minimalFooter() {
     );
 }
 
-export default minimalFooter;
+export default MinimalFooter;
