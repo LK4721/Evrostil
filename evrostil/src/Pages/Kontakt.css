@@ -179,7 +179,7 @@
     height: 100%;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
   .Kontakt {
     grid-template-columns: minmax(240px, 1fr) minmax(260px, 1fr);
     padding: 92px 28px 35px;

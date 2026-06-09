@@ -4,7 +4,7 @@ import './footer.css'
 
 function Footer() {
     return (
-        <div className="footer">
+        <div className="footer siteFooter">
             <div className="footer-bg" aria-hidden="true" />
             <div className="footer-overlay" aria-hidden="true" />
             <div className="top">

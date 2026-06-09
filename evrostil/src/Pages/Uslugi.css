@@ -277,7 +277,7 @@
     .uslugiLabel {
         font-size: clamp(0.98rem, 3.2vw, 1rem);
     }
-}
+} 
 
 @media (max-width: 460px) {
     .uslugiWrap {

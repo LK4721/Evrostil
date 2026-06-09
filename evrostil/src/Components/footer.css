@@ -53,10 +53,10 @@
 .top-right{
     display:flex;
     align-items: flex-start;
-    gap:80px;
+    gap:10px;
     margin-top:10px;
-    margin-left:50px;
-    padding-left:50px;
+    margin-left:0px;
+    padding-left:14px;
 }
 .links,
 .kontakt {
@@ -211,8 +211,9 @@
 }
 
 .contact-subsection {
-    padding:2px;
-    margin-bottom:10px;
+    width: 250px;
+    padding: 2px;
+    margin-bottom: 10px;
     border-left: 3px solid var(--accent-color);
     background: #191717;
     border-radius: 0 8px 8px 0;
@@ -222,6 +223,7 @@
     color: #ffffff;
     font-size: 15px;
     font-weight: 600;
+    margin-left: 14px;
     margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -231,6 +233,8 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    width: 60%;
+    margin-left: 30px;
     margin-bottom: 12px;
     color: #b8b8b8;
     font-size: 15px;
@@ -279,17 +283,7 @@
 
 .rightKontakt{
     margin-top:85px;
-    margin-left:50px;
-}
-.contact-item{
-    margin-left:30px;
-    width:60%;
-}
-.contact-subsection h4{
-    margin-left: 14px;
-}
-.contact-subsection{
-    width:250px
+    margin-left:25px;
 }
 .logofoot{
     width:65%;
@@ -299,51 +293,113 @@
     font-family: 'Montserrat', Arial, sans-serif;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 0px) {
+    
+    .links{
+        display: none;
+    }
+
+  .top {
+    display: flex;
+    flex-wrap: nowrap;  /* <-- не дозволи wrap */
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 32px;
+  }
+
+  .top-left {
+    flex: 0 0 300px;  /* фиксна ширина */
+    width: 300px;
+    margin: 0;
+    padding: 0 20px 0 0;
+    border-right: 1px solid rgba(230, 230, 230, 0.3);
+    border-bottom: 0;
+  }
+
+  .top-right {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .kontakt {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .contact-subsection {
+    width: 200px;  /* малку потесно */
+  }
+
+}
+
+@media (max-width: 1200px) {
     .top {
-        flex-wrap: wrap;
-        gap: 30px;
+        display: flex;
+        align-items: flex-start;
+        gap: 34px;
         padding: 40px 32px;
+    }
+
+    .top-left {
+        flex: 0 0 350px;
+        width: 350px;
+        margin: 0;
+        border-right: 1px solid rgba(230, 230, 230, 0.3);
+        border-bottom: 0;
+    }
+
+    .top-right {
+        font-size: 14px;
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0;
+        padding-left: 0;
+    }
+
+
+     .contact-subsection {
+        width: 200px;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .kontakt {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .contact-subsection {
+        width: 300px;
+    }
+
+    .contact-item {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .rightKontakt {
+        margin: 70px 0 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        display: block;
+        padding: 34px 22px;
     }
 
     .top-left {
         width: 100%;
         margin: 0;
-        padding-bottom: 26px;
+        padding: 0 0 26px;
         border-right: 0;
         border-bottom: 1px solid rgba(230, 230, 230, 0.3);
-    }
-
-    .top-left p {
-        width: min(680px, 100%);
-    }
-
-    .logofoot {
-        width: min(260px, 70%);
-    }
-
-    .top-right {
-        width: 100%;
-        margin: 0;
-        padding-left: 0;
-        gap: 35px;
-        flex-wrap: wrap;
-    }
-
-    .rightKontakt {
-        margin-top: 75px;
-        margin-left: 20px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .footer {
-        min-height: auto;
-    }
-
-    .top {
-        display: block;
-        padding: 34px 22px;
     }
 
     .top-right,
@@ -355,31 +411,120 @@
         margin-top: 28px;
     }
 
-    .links {
-        display: none;
-    }
-
-    .links h5,
-    .kontakt h5 {
-        width: 100%;
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
     .contact-subsection {
         width: 100%;
-    }
-
-    .contact-item {
-        width: 100%;
-        margin-left: 0;
     }
 
     .rightKontakt {
         margin: 25px 0 0;
     }
+}
 
-    .socials {
-        flex-wrap: wrap;
+@media (max-width: 1200px) {
+    .siteFooter .top {
+        display: grid;
+        grid-template-columns: minmax(0, 350px) minmax(0, 1fr);
+        align-items: flex-start;
+        gap: 34px;
+        padding: 40px 32px;
+    }
+
+    .siteFooter .top-left {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        margin: 0;
+        padding: 0 30px 0 0;
+        border-right: 1px solid rgba(230, 230, 230, 0.3);
+        border-bottom: 0;
+    }
+
+    .siteFooter .top-left p {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .siteFooter .top-right {
+        grid-column: 2;
+        grid-row: 1;
+        display: block;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .siteFooter .links {
+        display: none;
+    }
+
+    .siteFooter .kontakt {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .siteFooter .contact-subsection h4 {
+        font-size: 13px;
+    }
+
+    .siteFooter .contact-item,
+    .siteFooter .contact-item a {
+        font-size: 13px;
+    }
+
+    .siteFooter .contact-subsection {
+        width: 300px;
+    }
+
+    .siteFooter .contact-item {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .siteFooter .rightKontakt {
+        margin: 70px 0 0;
+    }
+
+    .siteFooter .footer-bottom {
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 970px) {
+    .siteFooter .top {
+        display: block;
+        padding: 34px 22px;
+    }
+
+    .siteFooter .top-left {
+        width: 100%;
+        margin: 0;
+        padding: 0 0 26px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(230, 230, 230, 0.3);
+    }
+
+    .siteFooter .top-right,
+    .siteFooter .kontakt {
+        display: block;
+    }
+
+    .siteFooter .top-right {
+        margin-top: 28px;
+    }
+
+    .siteFooter .contact-subsection {
+        width: 100%;
+    }
+
+    .siteFooter .rightKontakt {
+        margin: 25px 0 0;
+    }
+
+    .top-left{
+        width: 100%;
     }
 }
