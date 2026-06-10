@@ -250,7 +250,7 @@
 }
 
 .contact-item a {
-    font-size: 14px;
+    font-size: inherit;
     color: #b8b8b8;
     text-decoration: none;
     transition: color 0.3s;
@@ -258,7 +258,8 @@
 
 .contact-item a[href^="tel:"],
 .contact-item span {
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: inherit;
+    font-size: inherit;
     font-variant-numeric: lining-nums;
 }
 
@@ -496,7 +497,7 @@
 @media (max-width: 970px) {
     .siteFooter .top {
         display: block;
-        padding: 34px 22px;
+        padding: 34px 122px;
     }
 
     .siteFooter .top-left {
@@ -526,5 +527,12 @@
 
     .top-left{
         width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .siteFooter .top {
+        display: block;
+        padding: 34px 52px;
     }
 }

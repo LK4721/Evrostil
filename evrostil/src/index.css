@@ -32,6 +32,8 @@ html,
 
 * {
   font-family: Georgia, "Times New Roman", serif !important;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
 }
 
 img,

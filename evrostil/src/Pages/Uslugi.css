@@ -70,9 +70,11 @@
 .uslugiWrap {
     order: 3;
     padding-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(205px, 220px));
+    display: flex;
+    flex-wrap: wrap;
     gap: 18px;
+    max-width: 100%;
+    margin-inline: auto;
     justify-content: center;
     align-items: stretch;
 }
@@ -89,6 +91,8 @@
 
 .uslugiCard {
     position: relative;
+    flex: 0 1 275px;
+    width: min(275px, 100%);
     min-height: 300px;
     display: flex;
     flex-direction: column;
@@ -279,11 +283,9 @@
 } 
 
 @media (max-width: 460px) {
-    .uslugiWrap {
-        grid-template-columns: 1fr;
-    }
-
     .uslugiCard {
+        flex-basis: 100%;
+        width: 100%;
         min-height: 260px;
     }
 }

@@ -1942,7 +1942,7 @@ drawer {
 }
 
 .astraPromoButton:hover {
-  background: rgba(177, 134, 93, 0.16);
+  background-color: rgba(69, 68, 68, 0.4);
   border-color: #d2b08c;
   transform: translateY(-2px);
 }

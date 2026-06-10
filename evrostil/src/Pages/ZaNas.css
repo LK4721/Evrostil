@@ -439,7 +439,7 @@
     }
 
     .ZaNasImage {
-        min-width: 100%;
+        min-width: 80%;
         margin: 18px auto 0;
         padding: 8px;
     }
@@ -533,7 +533,7 @@
     }
 
     .ZaNasImage {
-        min-width: 100%;
+        min-width: 90%;
         padding: 6px;
         margin-top: 8px;
         margin-bottom: 38px;

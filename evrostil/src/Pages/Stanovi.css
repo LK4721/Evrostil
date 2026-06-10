@@ -2176,7 +2176,7 @@ body {
   height: 100%;
   min-height: 300px;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   background: #050505;
 }
 
@@ -2250,7 +2250,7 @@ body {
   height: 100%;
   min-height: 300px;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   background: #050505;
   border-radius: 48px;
   cursor: pointer;
