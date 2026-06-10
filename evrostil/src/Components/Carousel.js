@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Carousel.css';
 
 function Carousel({images, interval= 10000}) {
     const slideImages = Array.isArray(images) ? images : [];
-    const animationDuration = `${(slideImages.length || 1) * (interval / 1000)}s`;
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        if (slideImages.length < 2) {
+            return undefined;
+        }
+
+        const timer = setInterval(() => {
+            setActiveIndex((index) => (index + 1) % slideImages.length);
+        }, interval);
+
+        return () => clearInterval(timer);
+    }, [interval, slideImages.length]);
+
+    const activeImage = slideImages[activeIndex] || slideImages[0];
 
     return (
         <div className="slider">
-            {slideImages.map((img, index) => (
+            {activeImage && (
                 <img
-                    key={index}
-                    src={img}
-                    alt={`Slide ${index + 1}`}
-                    loading={index === 0 ? "eager" : "lazy"}
+                    key={activeImage}
+                    src={activeImage}
+                    alt={`Slide ${activeIndex + 1}`}
+                    loading={activeIndex === 0 ? "eager" : "lazy"}
                     decoding="async"
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    style={{
-                        animationDuration,
-                        animationDelay: `${index * (interval / 1000)}s`
-                    }}
+                    fetchPriority={activeIndex === 0 ? "high" : "auto"}
                 />
-            ))}
+            )}
         </div>
     );
 }

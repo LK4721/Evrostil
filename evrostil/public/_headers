@@ -1,0 +1,20 @@
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/Uslugi/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/Materijali/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/Icons/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.mp4
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  Cache-Control: public, max-age=0, must-revalidate

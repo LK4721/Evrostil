@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -5,13 +6,13 @@ import Navbar from "./Components/Navbar";
 import ScrollToTop from "./Components/ScrollToTop";
 import SEO from "./Components/SEO";
 
-import HomePage from "./Pages/Home";
-import Stanovi from "./Pages/Stanovi";
-import Mebel from "./Pages/Mebel";
-import Uslugi from "./Pages/Uslugi";
-import Kontakt from "./Pages/Kontakt";
-import ZaNas from "./Pages/ZaNas";
-import Materijali from "./Pages/Materijali";
+const HomePage = lazy(() => import("./Pages/Home"));
+const Stanovi = lazy(() => import("./Pages/Stanovi"));
+const Mebel = lazy(() => import("./Pages/Mebel"));
+const Uslugi = lazy(() => import("./Pages/Uslugi"));
+const Kontakt = lazy(() => import("./Pages/Kontakt"));
+const ZaNas = lazy(() => import("./Pages/ZaNas"));
+const Materijali = lazy(() => import("./Pages/Materijali"));
 
 const pageSeo = {
     "/": {
@@ -70,16 +71,18 @@ function App() {
             <ScrollToTop />
             <Navbar />
 
-            <Routes>
-                <Route path="/" element={<RouteWithSeo path="/" element={<HomePage />} />} />
-                <Route path="/stanovi" element={<RouteWithSeo path="/stanovi" element={<Stanovi />} />} />
-                <Route path="/mebel" element={<RouteWithSeo path="/mebel" element={<Mebel />} />} />
-                <Route path="/galerija" element={<RouteWithSeo path="/galerija" element={<Materijali />} />} />
-                <Route path="/materijali" element={<RouteWithSeo path="/materijali" element={<Materijali />} />} />
-                <Route path="/uslugi" element={<RouteWithSeo path="/uslugi" element={<Uslugi />} />} />
-                <Route path="/za-nas" element={<RouteWithSeo path="/za-nas" element={<ZaNas />} />} />
-                <Route path="/kontakt" element={<RouteWithSeo path="/kontakt" element={<Kontakt />} />} />
-            </Routes>
+            <Suspense fallback={null}>
+                <Routes>
+                    <Route path="/" element={<RouteWithSeo path="/" element={<HomePage />} />} />
+                    <Route path="/stanovi" element={<RouteWithSeo path="/stanovi" element={<Stanovi />} />} />
+                    <Route path="/mebel" element={<RouteWithSeo path="/mebel" element={<Mebel />} />} />
+                    <Route path="/galerija" element={<RouteWithSeo path="/galerija" element={<Materijali />} />} />
+                    <Route path="/materijali" element={<RouteWithSeo path="/materijali" element={<Materijali />} />} />
+                    <Route path="/uslugi" element={<RouteWithSeo path="/uslugi" element={<Uslugi />} />} />
+                    <Route path="/za-nas" element={<RouteWithSeo path="/za-nas" element={<ZaNas />} />} />
+                    <Route path="/kontakt" element={<RouteWithSeo path="/kontakt" element={<Kontakt />} />} />
+                </Routes>
+            </Suspense>
         </div>
     );
 }

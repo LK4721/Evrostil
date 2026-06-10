@@ -35,7 +35,6 @@ const heroImages = heroContext
 function Home() {
   const navigate = useNavigate();
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const [galleryIsChanging, setGalleryIsChanging] = useState(false);
   const activeGalleryImage = galleryImages[galleryIndex];
 
   const showPrevGalleryImage = () => {
@@ -61,18 +60,16 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    setGalleryIsChanging(true);
-    const animationTimer = setTimeout(() => setGalleryIsChanging(false), 1200);
-
-    return () => clearTimeout(animationTimer);
-  }, [galleryIndex]);
-
-  useEffect(() => {
     if (typeof document === "undefined") {
       return undefined;
     }
 
-    const links = heroImages.map((src) => {
+    const firstHeroImage = heroImages[0];
+    if (!firstHeroImage) {
+      return undefined;
+    }
+
+    const links = [firstHeroImage].map((src) => {
       const link = document.createElement("link");
       link.rel = "preload";
       link.as = "image";
@@ -82,7 +79,7 @@ function Home() {
     });
 
     return () => links.forEach((link) => link.parentNode?.removeChild(link));
-  }, [heroImages]);
+  }, []);
 
   return (
     <div className="HomeWrapper">

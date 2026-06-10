@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Stanovi.css";
 import Footer from "../Components/footer";
 import kompleks1 from "../sliki/zgrada123.webp";
@@ -20,6 +20,7 @@ function Stanovi() {
 
   const [astraSlideIndex, setAstraSlideIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   const astraBookRef = useRef(null);
   const videoRef = useRef(null);
@@ -37,11 +38,15 @@ function Stanovi() {
   };
 
   const playAstraVideo = () => {
-    if (!videoRef.current) return;
+    setShouldLoadVideo(true);
+  };
+
+  useEffect(() => {
+    if (!shouldLoadVideo || !videoRef.current) return;
 
     videoRef.current.play();
     setIsVideoPlaying(true);
-  };
+  }, [shouldLoadVideo]);
 
   return (
     <div className="StanoviWrapper">
@@ -100,9 +105,10 @@ function Stanovi() {
                 <div className="astraHeroImage">
                   <video
                     ref={videoRef}
-                    src="/Uslugi/astra-residence.mp4"
+                    src={shouldLoadVideo ? "/Uslugi/astra-residence.mp4" : undefined}
                     controls
                     playsInline
+                    preload="none"
                     poster="/Icons/astraVideo.webp"
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
