@@ -1628,6 +1628,60 @@ body {
   margin-top: 26px;
 }
 
+.astraHeroTop .astraHeroCopy {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+.astraHeroCopy > .astraHeroImage,
+.astraHeroCopy > .astraHeroCards {
+  width: min(100%, 760px);
+}
+
+.astraHeroCopy > .astraHeroCards {
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.astraHeroCopy > .astraHeroImage {
+  flex: none;
+  margin-top: 26px;
+}
+
+@media (min-width: 1201px) {
+  .astraHeroTop .astraHeroCopy {
+    display: grid;
+    grid-template-columns: minmax(360px, 0.9fr) minmax(420px, 1.1fr);
+    column-gap: 34px;
+    align-items: center;
+  }
+
+  .astraHeroCopy > span,
+  .astraHeroCopy > h1,
+  .astraHeroCopy > p,
+  .astraHeroCopy > .astraHeroCards {
+    grid-column: 1;
+  }
+
+  .astraHeroCopy > .astraHeroImage {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .astraHeroCopy > .astraHeroCards {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .astraHeroTop .astraHeroCopy {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .astraHeroDiscount,
 .astraHeroCard {
   min-height: 76px;

@@ -275,6 +275,11 @@
 }
 
 @media (max-width: 1200px) {
+    .navbar.animate-on-load {
+        animation-delay: 0s;
+        animation-fill-mode: both;
+    }
+
     .stick {
         height: 0;
     }
@@ -348,16 +353,16 @@
         left: 0;
         width: 100%;
         display: block;
-        opacity: 0;
+        visibility: hidden;
+        opacity: 1;
         pointer-events: none;
-        transform: translateY(-10px);
-        transition: opacity 0.22s ease, transform 0.22s ease;
+        transition: visibility 0s linear 0.22s;
     }
 
     .navbar.mobile-open .navbar-items {
-        opacity: 1;
+        visibility: visible;
         pointer-events: auto;
-        transform: translateY(0);
+        transition-delay: 0s;
     }
 
     .navbar-items > ul {
@@ -378,6 +383,15 @@
         box-shadow:
             0 18px 42px rgba(0, 0, 0, 0.32),
             inset 0 0 18px rgba(255, 255, 255, 0.04);
+        opacity: 0;
+        transform: translateY(-10px) translateZ(0);
+        transition: transform 0.22s ease, opacity 0.22s ease;
+        will-change: backdrop-filter, transform, opacity;
+    }
+
+    .navbar.mobile-open .navbar-items > ul {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
     }
 
     .navbar-items ul li a.navlink {

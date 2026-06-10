@@ -70,6 +70,31 @@ function Stanovi() {
                     вреднуваат квалитет, удобност и долгорочна вредност.
                   </p>
 
+                <div className="astraHeroImage">
+                  <video
+                    ref={videoRef}
+                    src={shouldLoadVideo ? "/Uslugi/astra-residence.mp4" : undefined}
+                    controls
+                    playsInline
+                    preload="none"
+                    poster="/Icons/astraVideo.webp"
+                    onPlay={() => setIsVideoPlaying(true)}
+                    onPause={() => setIsVideoPlaying(false)}
+                    onEnded={() => setIsVideoPlaying(false)}
+                  />
+
+                  {!isVideoPlaying && (
+                    <button
+                      type="button"
+                      className="astraHeroPlay"
+                      onClick={playAstraVideo}
+                      aria-label="Погледни видео"
+                    >
+                      <span>▶</span>
+                    </button>
+                  )}
+                </div>
+
                   <div className="astraHeroCards">
                     <div className="astraHeroDiscount">
                       <div className="astraHeroIcon astraHeroIconDiscount">
@@ -102,30 +127,6 @@ function Stanovi() {
                   </div>
                 </div>
 
-                <div className="astraHeroImage">
-                  <video
-                    ref={videoRef}
-                    src={shouldLoadVideo ? "/Uslugi/astra-residence.mp4" : undefined}
-                    controls
-                    playsInline
-                    preload="none"
-                    poster="/Icons/astraVideo.webp"
-                    onPlay={() => setIsVideoPlaying(true)}
-                    onPause={() => setIsVideoPlaying(false)}
-                    onEnded={() => setIsVideoPlaying(false)}
-                  />
-
-                  {!isVideoPlaying && (
-                    <button
-                      type="button"
-                      className="astraHeroPlay"
-                      onClick={playAstraVideo}
-                      aria-label="Погледни видео"
-                    >
-                      <span>▶</span>
-                    </button>
-                  )}
-                </div>
               </div>
             </section>
 
