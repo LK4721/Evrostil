@@ -47,6 +47,7 @@
     margin-left: 50px;
     margin-top:25px;
     width:25%;
+    height: fit-content;
     border-right:1px solid rgb(230, 230, 230, 0.3);
 }
 .top-left p{
@@ -265,7 +266,6 @@
 .contact-item span {
     font-family: inherit;
     font-size: inherit;
-    font-variant-numeric: lining-nums;
 }
 
 .contact-item:hover {
@@ -426,6 +426,7 @@
 }
 
 @media (max-width: 1200px) {
+
     .siteFooter .top {
         display: grid;
         grid-template-columns: minmax(0, 350px) minmax(0, 1fr);
@@ -474,7 +475,8 @@
     }
 
     .siteFooter .contact-item,
-    .siteFooter .contact-item a {
+    .siteFooter .contact-item a,
+    .siteFooter .contact-item span {
         font-size: 13px;
         padding-left: 20px;
     }
@@ -499,22 +501,36 @@
 
 
 @media (max-width: 970px) {
+    .top-left{
+        height: auto;
+    }
+
+    .top-left p{
+        display:none;
+    }
+
     .top-left img{
         width: 60%;
         height: auto;
     }
 
     .siteFooter .top {
-        display: block;
+        display: flex;
+        flex-direction: column;
         padding: 34px 122px 0px;
     }
 
     .siteFooter .top-left {
+        order: 2;
+        flex: 0 0 auto;
         width: 100%;
+        height: fit-content;
         margin: 0;
-        padding: 0 0 26px;
+        padding: 0 0 5px;
         border-right: 0;
-        border-bottom: 1px solid rgba(230, 230, 230, 0.3);
+        border-bottom: 0;
+        border-top: 1px solid rgba(230, 230, 230, 0.3);
+        padding-top: 26px;
     }
 
     .siteFooter .top-left p {
@@ -522,17 +538,36 @@
         line-height: 1.55;
     }
 
+    .siteFooter .socials {
+        justify-content: center;
+    }
+
     .siteFooter .top-right,
     .siteFooter .kontakt {
         display: block;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
 
     .siteFooter .top-right {
+        order: 1;
+        flex: 0 0 auto;
+        height: fit-content;
         margin-top: 28px;
     }
 
     .siteFooter .contact-subsection {
         width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .siteFooter .contact-item {
+        justify-content: flex-start;
+        text-align: left;
     }
 
     .siteFooter .rightKontakt {
@@ -550,7 +585,26 @@
 
 @media (max-width: 600px) {
     .siteFooter .top {
-        display: block;
+        display: flex;
+        flex-direction: column;
         padding: 34px 52px;
+    }
+
+    .siteFooter .top-right {
+        order: 1;
+    }
+
+    .siteFooter .top-left {
+        order: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .siteFooter .top-right,
+    .siteFooter .kontakt {
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
