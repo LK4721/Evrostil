@@ -89,9 +89,7 @@ function Stanovi() {
                       className="astraHeroPlay"
                       onClick={playAstraVideo}
                       aria-label="Погледни видео"
-                    >
-                      <span>▶</span>
-                    </button>
+                    />
                   )}
                 </div>
 
