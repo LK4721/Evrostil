@@ -1923,22 +1923,23 @@ drawer {
 
 .astraPromoButton {
   width: fit-content;
-  min-width: 220px;
-  padding: 15px 24px;
+  max-width: 100%;
+  min-width: min(220px, 100%);
+  padding: clamp(12px, 2vw, 15px) clamp(16px, 4vw, 24px);
   color: rgba(255, 255, 255, 0.9);
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(177, 134, 93, 0.9);
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 13px;
+  font-size: clamp(11px, 1.6vw, 13px);
   font-weight: 600;
-  letter-spacing: 0.26em;
+  letter-spacing: clamp(0.12em, 0.8vw, 0.26em);
   cursor: pointer;
   transition: background-color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
 .astraPromoButton span {
-  margin-left: 24px;
-  font-size: 20px;
+  margin-left: clamp(12px, 3vw, 24px);
+  font-size: clamp(16px, 3vw, 20px);
 }
 
 .astraPromoButton:hover {
@@ -2058,8 +2059,8 @@ drawer {
   .astraPromoButton {
     width: 100%;
     min-width: 0;
-    padding: 15px 18px;
-    font-size: 13px;
+    padding: clamp(12px, 3vw, 15px) clamp(14px, 4vw, 18px);
+    font-size: clamp(11px, 2.4vw, 13px);
   }
 }
 
@@ -2810,9 +2811,9 @@ drawer {
   .astraPromoButton {
     width: min(100%, 330px);
     min-width: 0;
-    padding: 15px 18px;
-    font-size: 12px;
-    letter-spacing: 0.18em;
+    padding: clamp(12px, 4vw, 15px) clamp(14px, 5vw, 18px);
+    font-size: clamp(10px, 3vw, 12px);
+    letter-spacing: clamp(0.08em, 0.7vw, 0.18em);
   }
 
   .homeGallery {
@@ -2932,9 +2933,9 @@ drawer {
   .astraPromoButton {
     width: min(100%, 330px);
     min-width: 0;
-    padding: 15px 18px;
-    font-size: 12px;
-    letter-spacing: 0.18em;
+    padding: clamp(12px, 4vw, 15px) clamp(14px, 5vw, 18px);
+    font-size: clamp(10px, 3vw, 12px);
+    letter-spacing: clamp(0.08em, 0.7vw, 0.18em);
   }
 }
 

@@ -47,8 +47,7 @@
 /* LEFT */
 .minimalFooter .top-leftminimal {
     flex: 0 0 25%;
-    margin: 25px 0 25px 50px;
-    padding-right: 50px;
+    margin: auto 0;
     width: 25%;
     max-width: 25%;
     box-sizing: border-box;
@@ -80,7 +79,6 @@
 .minimalFooter .top-rightminimal {
     display: flex;
     gap: 0;
-    margin-top: 50px;
     width: 60%;
     gap:15px;
     align-items: stretch;
@@ -143,7 +141,7 @@
     max-width: 60%;
     padding-top: 0;
     text-align: left;
-    margin: 45px;
+    margin: 15px 0 15px 0;
 }
 
 .minimalFooter .cta-label {

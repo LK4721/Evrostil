@@ -199,17 +199,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    max-width: 700px;
     min-height: 56px;
     padding: 0 40px;
     color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    font-size: 1.38rem;
+    font-size: clamp(0.82rem, 2.2vw, 1.38rem);
     font-weight: 800;
-    background:
-        linear-gradient(135deg, rgba(108, 108, 108, 0.18), rgba(45, 38, 38, 0.28)),
-        rgba(0, 0, 0, 0.58);
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.427);
     border: 1px solid rgba(255, 255, 255, 0.72);
     box-shadow:
         0 16px 38px rgba(0, 0, 0, 0.44),

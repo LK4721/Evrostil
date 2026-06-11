@@ -10,7 +10,7 @@ function Footer() {
             <div className="top">
                 <div className="top-left">
                     <img className="logofoot" src={logo} alt="Евростил-М" loading="lazy" decoding="async"/>
-                    <p>Квалитетни станови и мебел со стил. Водечка компанија во Струмица со повеќе од 20 години искуство во изградба и производство на мебел по нарачка.</p>
+                    {/* <p>Квалитетни станови и мебел со стил. Водечка компанија во Струмица со повеќе од 20 години искуство во изградба и производство на мебел по нарачка.</p> */}
                     <div className="socials">
                         <a href="https://facebook.com/evrostilm" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <i className="fab fa-facebook-f"></i>

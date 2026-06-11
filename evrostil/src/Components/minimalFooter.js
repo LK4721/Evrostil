@@ -13,11 +13,11 @@ function MinimalFooter() {
                 <div className="top-leftminimal">
                     <img className="logofoot" src={logo} alt="Евростил-М" />
 
-                    <p>
+                    {/* <p>
                         Квалитетни станови и мебел со стил. Водечка компанија во
                         Струмица со повеќе од 20 години искуство во изградба и
                         производство на мебел по нарачка.
-                    </p>
+                    </p> */}
 
                     <div className="socials">
                         <a href="https://facebook.com/evrostilm" aria-label="Facebook" target="_blank" rel="noopener noreferrer">

@@ -6,6 +6,7 @@
     scroll-snap-align: end;
     z-index: 100;
     font-family: 'Montserrat', Arial, sans-serif;
+    background-color: #111;
     overflow: hidden;
 }
 
@@ -19,9 +20,11 @@
 .footer-bg {
     z-index: 0;
     background-color: #111;
+    background-image: url('../../public/Uslugi/black-sand.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    filter: blur(4px);
 }
 
 .footer-overlay {
@@ -45,14 +48,17 @@
     display:flex;
     color:white;
     height:fit-content;
+    align-items: stretch;
     border-top:2px solid var(--accent-color);
+    padding: 30px 0;
 }
 .top-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 15px;
     padding-right: 25px;
-    margin-top:25px;
     width:25%;
-    height: fit-content;
     border-right:1px solid rgb(230, 230, 230, 0.3);
 }
 .top-left p{
@@ -74,9 +80,13 @@
     align-self: flex-start;
 }
 
+.links {
+    text-align: left;
+}
+
 .links h5, .kontakt h5{
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 0;
     margin-bottom: 30px;
     font-weight: 700;
@@ -103,7 +113,7 @@
 }
 
 .kontaktza{
-    font-size:20px;
+    font-size:18px;
     margin-left:-40px
 }
 
@@ -125,7 +135,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     color: #cac9ca; /* Црвена боја */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
     transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
@@ -155,7 +165,7 @@
 .footer .links ul li a {
     color: #b8b8b8;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 17px;
     transition: color 0.28s ease;
     position: relative;
     padding-left: 25px !important;
@@ -179,7 +189,7 @@
     left: -10px;
     top: 0;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     transition: color 0.28s ease;
     pointer-events: none;
 }
@@ -202,7 +212,7 @@
 /* Контакт Секција со твои class names */
 .kontakt h5 {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 0;
     margin-bottom: 25px;
     font-weight: 700;
@@ -234,17 +244,13 @@
 
 .contact-subsection h4 {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     margin-left: 14px;
     margin-bottom: 12px;
     margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.leftKontakt {
-    margin-left: 30px;
 }
 
 .contact-item {
@@ -255,13 +261,13 @@
     margin-left: 30px;
     margin-bottom: 5px;
     color: #b8b8b8;
-    font-size: 19px;
+    font-size: 17px;
     transition: all 0.3s;
 }
 
 .contact-item i {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     width: 20px;
     margin-top: 3px;
     flex-shrink: 0;
@@ -319,7 +325,14 @@
     margin-left:25px;
 }
 .logofoot{
-    width:65%;
+    display: block;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.leftKontakt {
+    padding-left: 8%;
 }
 
 .footer{
@@ -373,7 +386,7 @@
         display: flex;
         align-items: flex-start;
         gap: 34px;
-        padding: 40px 32px;
+        padding: 40px 62px;
     }
 
     .top-left {
@@ -418,6 +431,10 @@
     .rightKontakt {
         margin: 70px 0 0;
     }
+
+    .leftKontakt {
+        padding-left: 0;
+    }
 }
 
 @media (max-width: 700px) {
@@ -457,7 +474,7 @@
     .siteFooter .top {
         display: grid;
         grid-template-columns: minmax(0, 350px) minmax(0, 1fr);
-        align-items: flex-start;
+        align-items: stretch;
         gap: 34px;
         padding: 40px 32px;
     }
@@ -465,6 +482,7 @@
     .siteFooter .top-left {
         grid-column: 1;
         grid-row: 1;
+        align-self: stretch;
         width: 100%;
         margin: 0;
         padding: 0 30px 0 0;
@@ -472,8 +490,9 @@
     }
 
     .siteFooter .top-left p {
+        display: none;
         width: 100%;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .siteFooter .top-right {
@@ -500,14 +519,14 @@
     }
 
     .siteFooter .contact-subsection h4 {
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .siteFooter .contact-item,
     .siteFooter .contact-item a,
     .siteFooter .contact-item span,
     .siteFooter .links ul li a {
-        font-size: 17px;
+        font-size: 15px;
         padding-left: 20px;
     }
 
@@ -526,6 +545,11 @@
 
     .siteFooter .footer-bottom {
         grid-column: 1 / -1;
+    }
+
+    .top-left{
+        padding:0;
+        margin:0;
     }
 }
 
@@ -564,7 +588,7 @@
     }
 
     .siteFooter .top-left p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.55;
     }
 
@@ -579,6 +603,10 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+    }
+
+    .siteFooter .links {
+        text-align: left;
     }
 
     .siteFooter .top-right {
@@ -622,7 +650,7 @@
     .siteFooter .top {
         display: flex;
         flex-direction: column;
-        padding: 34px 52px;
+        padding: 34px 52px 0px;
     }
 
     .siteFooter .top-right {

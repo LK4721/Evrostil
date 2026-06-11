@@ -403,13 +403,13 @@
 
     .navbar-items ul li:hover a.navlink {
         scale: 1;
-        background: rgb(49, 49, 49);
+        background: rgb(57, 57, 57);
     }
 
     .navbar-items ul li a.navlink.active {
         font-size: 14px;
         border-bottom-width: 0 !important;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(177, 134, 93, 0.24));
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(123, 122, 121, 0.24));
     }
 }
 
@@ -444,7 +444,7 @@
     }
 
     .navbar-items > ul {
-        width: min(440px, calc(100vw - 44px));
+        width: min(340px, calc(100vw - 44px));
         padding: 18px;
         gap: 7px;
         font-size: 20px;
