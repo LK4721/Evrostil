@@ -9,11 +9,6 @@ const services = [
         title: "Склопување на МДФ крила со лајсни",
     },
     {
-        image: "/Uslugi/telehandler-icon.webp",
-        description: "Брза и безбедна манипулација на товар на потребна висина.",
-        title: "Наем на телескопски вилушкар",
-    },
-    {
         image: "/Uslugi/forklift-no-background.svg",
         description: "Практична поддршка за магацин, градилиште и достава.",
         title: "Товар и истовар на роба со вилушкар",

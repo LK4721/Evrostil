@@ -4,7 +4,7 @@ import './minimalFooter.css';
 
 function MinimalFooter() {
     return (
-        <div className="footer">
+        <div className="footer minimalFooter">
             <div className="footer-bg" aria-hidden="true" />
             <div className="footer-overlay" aria-hidden="true" />
             <div className="top">
@@ -30,7 +30,7 @@ function MinimalFooter() {
                 </div>
 
                 {/* RIGHT */}
-                <div className="top-right">
+                <div className="top-rightminimal">
 
                     {/* LINKS */}
                     <div className="links">

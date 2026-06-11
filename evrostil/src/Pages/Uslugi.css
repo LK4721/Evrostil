@@ -105,7 +105,6 @@
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 0;
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
-    transition: transform 0.32s ease, border-color 0.32s ease, background-color 0.32s ease, box-shadow 0.32s ease;
 }
 
 .uslugiCard::before {
@@ -119,13 +118,6 @@
     pointer-events: none;
     background: rgba(255, 255, 255, 0.42);
     opacity: 0.55;
-}
-
-.uslugiCard:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.26);
-    background: rgba(0, 0, 0, 0.86);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.44);
 }
 
 .uslugiIcon {
@@ -158,21 +150,6 @@
     filter: invert(1) contrast(1.08);
     mix-blend-mode: screen;
     transition: filter 0.32s ease, mix-blend-mode 0.32s ease;
-}
-
-.uslugiCard:hover .uslugiIcon {
-    color: #050505;
-    background: #ffffff;
-    border-color: #ffffff;
-}
-
-.uslugiCard:hover .uslugiIcon.hasImage {
-    background: #ffffff;
-}
-
-.uslugiCard:hover .uslugiIcon.hasImage img {
-    filter: none;
-    mix-blend-mode: multiply;
 }
 
 .uslugiCardContent {
@@ -217,27 +194,54 @@
 }
 
 .uslugiCta {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 42px;
-    padding: 0 28px;
+    min-height: 56px;
+    padding: 0 40px;
     color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 1.32rem;
+    letter-spacing: 0.12em;
+    font-size: 1.38rem;
     font-weight: 800;
-    border: 1px solid rgba(255, 255, 255, 0.42);
-    transition: color 0.25s ease, background-color 0.25s ease, padding 0.25s ease;
+    background:
+        linear-gradient(135deg, rgba(108, 108, 108, 0.18), rgba(45, 38, 38, 0.28)),
+        rgba(0, 0, 0, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow:
+        0 16px 38px rgba(0, 0, 0, 0.44),
+        0 0 0 1px rgba(177, 134, 93, 0.28),
+        inset 0 0 18px rgba(255, 255, 255, 0.055);
+    transform: translateY(0);
+    transition: color 0.25s ease, background 0.25s ease, padding 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.uslugiCta::after {
+    content: "→";
+    margin-left: 12px;
+    font-size: 1.1em;
+    line-height: 1;
+    transition: transform 0.25s ease;
 }
 
 .uslugiCta:hover,
 .uslugiCta:focus-visible {
     color: #050505;
     background: #ffffff;
-    padding-inline: 34px;
+    padding-inline: 46px;
+    transform: translateY(-3px);
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.52),
+        0 0 28px rgba(255, 255, 255, 0.24);
     outline: none;
+}
+
+.uslugiCta:hover::after,
+.uslugiCta:focus-visible::after {
+    transform: translateX(5px);
 }
 
 @media (max-width: 1200px) {
@@ -265,10 +269,6 @@
     .uslugiCard {
         min-height: 275px;
         padding: 24px 16px 20px;
-    }
-
-    .uslugiCard:hover {
-        transform: none;
     }
 
     .uslugiIcon {

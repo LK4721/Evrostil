@@ -37,6 +37,10 @@
     z-index: 2;
 }
 
+.footer-bottom {
+    border-top: 1px solid rgba(230, 230, 230, 0.3);
+}
+
 .top{
     display:flex;
     color:white;
@@ -44,7 +48,8 @@
     border-top:2px solid var(--accent-color);
 }
 .top-left{
-    margin-left: 50px;
+    margin-left: 15px;
+    padding-right: 25px;
     margin-top:25px;
     width:25%;
     height: fit-content;
@@ -104,6 +109,7 @@
 
 .socials {
     display: flex;
+    justify-content: center;
     gap: 15px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -149,7 +155,7 @@
 .footer .links ul li a {
     color: #b8b8b8;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 19px;
     transition: color 0.28s ease;
     position: relative;
     padding-left: 25px !important;
@@ -217,7 +223,8 @@
 }
 
 .contact-subsection {
-    width: 250px;
+    width: 300px;
+    height: fit-content;
     padding: 2px;
     margin-bottom: 10px;
     border-left: 3px solid var(--accent-color);
@@ -231,8 +238,13 @@
     font-weight: 600;
     margin-left: 14px;
     margin-bottom: 12px;
+    margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.leftKontakt {
+    margin-left: 30px;
 }
 
 .contact-item {
@@ -241,9 +253,9 @@
     gap: 12px;
     width: 60%;
     margin-left: 30px;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     color: #b8b8b8;
-    font-size: 15px;
+    font-size: 19px;
     transition: all 0.3s;
 }
 
@@ -264,8 +276,13 @@
 
 .contact-item a[href^="tel:"],
 .contact-item span {
-    font-family: inherit;
+    font-family: "Times New Roman", Times, serif !important;
     font-size: inherit;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: left;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
 }
 
 .contact-item:hover {
@@ -278,7 +295,7 @@
 }
 
 .rightKontakt .contact-item {
-    margin-bottom: 25px;
+    margin-bottom: 13px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -287,8 +304,18 @@
     display: flex;
 }
 
+.siteFooter .kontakt {
+    gap: clamp(12px, 2vw, 25px);
+    justify-content: space-between;
+    width: 100%;
+}
+
+.siteFooter .rightKontakt {
+    margin-left: auto;
+}
+
 .rightKontakt{
-    margin-top:85px;
+    margin-top:75px;
     margin-left:25px;
 }
 .logofoot{
@@ -341,7 +368,7 @@
 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
     .top {
         display: flex;
         align-items: flex-start;
@@ -380,7 +407,7 @@
     }
 
     .contact-subsection {
-        width: 300px;
+        width: 270px;
     }
 
     .contact-item {
@@ -425,7 +452,7 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
 
     .siteFooter .top {
         display: grid;
@@ -456,8 +483,9 @@
         width: auto;
         min-width: 0;
         max-width: none;
-        margin: 0;
         padding: 0;
+        margin-right: clamp(10px, 5vw, 30px);
+        margin-left: clamp(0px, 5vw, 30px);  
     }
 
     .siteFooter .links {
@@ -467,7 +495,8 @@
     .siteFooter .kontakt {
         display: flex;
         align-items: flex-start;
-        gap: 20px;
+        gap: clamp(12px, 2vw, 20px);
+        justify-content: space-between;
     }
 
     .siteFooter .contact-subsection h4 {
@@ -476,13 +505,14 @@
 
     .siteFooter .contact-item,
     .siteFooter .contact-item a,
-    .siteFooter .contact-item span {
-        font-size: 13px;
+    .siteFooter .contact-item span,
+    .siteFooter .links ul li a {
+        font-size: 17px;
         padding-left: 20px;
     }
 
     .siteFooter .contact-subsection {
-        width: 300px;
+        min-width: 250px;
     }
 
     .siteFooter .contact-item {
@@ -491,7 +521,7 @@
     }
 
     .siteFooter .rightKontakt {
-        margin: 70px 0 0;
+        margin: 70px 0 0 auto;
     }
 
     .siteFooter .footer-bottom {
@@ -500,7 +530,7 @@
 }
 
 
-@media (max-width: 970px) {
+@media (max-width: 1000px) {
     .top-left{
         height: auto;
     }
@@ -517,7 +547,7 @@
     .siteFooter .top {
         display: flex;
         flex-direction: column;
-        padding: 34px 122px 0px;
+        padding: clamp(28px, 6vw, 34px) clamp(22px, 12vw, 122px) 0;
     }
 
     .siteFooter .top-left {
@@ -545,7 +575,7 @@
     .siteFooter .top-right,
     .siteFooter .kontakt {
         display: block;
-        width: 85%;
+        width: 95%;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -581,6 +611,11 @@
     .top-left p{
         font-size:40px;
      }
+
+     
+    .leftKontakt {
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 600px) {
