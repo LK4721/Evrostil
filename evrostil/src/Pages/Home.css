@@ -9,10 +9,6 @@
   height: 100%;
   width: 100%;
   object-fit: cover; /* Crops image to fill space */
-  opacity: 50%;
-}
-body {
-  background: url("../sliki/blackBrick.webp") fixed center/cover;
 }
 
 .Home {
@@ -114,13 +110,6 @@ body {
   background: rgba(220, 220, 220, 0.55);
 }
 
-#num {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
 .text img {
   max-width: none;
 }
@@ -130,6 +119,12 @@ body {
 }
 
 .mobileHeroSlogan {
+  display: none;
+}
+
+.mobileHeroTrustCards,
+.mobileHeroScrollCue,
+.mobileHeroTitle {
   display: none;
 }
 
@@ -1200,10 +1195,6 @@ drawer {
     min-height: 560px;
   }
 
-  .image img {
-    opacity: 0.42;
-  }
-
   .text {
     --hero-logo-scale: min(0.78, calc((100vw - 36px) / 700));
     --hero-logo-x: calc(-445px * var(--hero-logo-scale));
@@ -1943,7 +1934,8 @@ drawer {
 }
 
 .astraPromoButton:hover {
-  background-color: rgba(69, 68, 68, 0.4);
+  background-color: rgb(254, 254, 254);
+  color: black;
   border-color: #d2b08c;
   transform: translateY(-2px);
 }
@@ -1952,10 +1944,6 @@ drawer {
   .bot {
     min-height: auto;
     grid-template-columns: 1fr;
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
-      url('../sliki/blackBrick.webp') center top / cover,
-      #050505;
   }
 
   .astraPromoImage {
@@ -2070,9 +2058,6 @@ drawer {
   box-sizing: border-box;
   color: #ffffff;
   font-family: 'Montserrat', Arial, sans-serif;
-  background:
-    url('../sliki/blackBrick.webp') center / cover,
-    #050505;
 }
 
 .homeGalleryHeader {
@@ -2267,10 +2252,6 @@ drawer {
 /* Gallery polish */
 .homeGallery {
   padding: clamp(58px, 7vw, 92px) clamp(18px, 4vw, 64px);
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.64)),
-    url('../sliki/blackBrick.webp') center / cover,
-    #050505;
 }
 
 .homeGalleryHeader {
@@ -2859,8 +2840,7 @@ drawer {
     min-height: auto;
     padding: 200px 16px 42px;
     overflow: hidden;
-    background:
-      url("../sliki/blackBrick.webp") center top / cover;
+  
   }
 
   .astraPromoImage {
@@ -3087,11 +3067,6 @@ drawer {
     font-weight: 700 !important;
   }
 
-  #num {
-    font-size: clamp(20px, 7vw, 28px) !important;
-    font-weight: 800 !important;
-  }
-
   #sks {
     font-size: clamp(9px, 3.1vw, 12px) !important;
     gap: clamp(6px, 2.7vw, 10px) !important;
@@ -3117,9 +3092,6 @@ drawer {
     letter-spacing: 0.04em !important;
   }
 
-  #num {
-    letter-spacing: 0.05em !important;
-  }
 }
 
 @media (min-width: 0px) and (max-width: 1200px) {
@@ -3146,8 +3118,9 @@ drawer {
     visibility: visible !important;
     position: absolute !important;
     left: 50% !important;
-    top: calc(56% + 96px) !important;
-    width: min(86vw, 460px) !important;
+    top: calc(46% + 96px) !important;
+    width: min(100vw, 660px) !important;
+    font-size: 40px;
     min-width: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
@@ -3199,8 +3172,237 @@ drawer {
   }
 }
 
+@media (min-width: 0px) and (max-width: 1200px) {
+  .mobileHeroLogo {
+    top: 76px !important;
+    width: clamp(126px, 32vw, 190px) !important;
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) !important;
+    animation: none !important;
+    z-index: 6 !important;
+  }
+
+  #popustnov {
+    top: calc(57svh + 18px) !important;
+  }
+}
+
 @media (max-width: 520px) {
   .bot {
     padding: 560px 16px 42px;
+  }
+}
+
+
+@media (max-width: 1030px) {
+  .mobileHeroTrustCards {
+    width: min(26vw, 720px);
+  }
+
+  .mobileHeroTrustCard {
+    min-height: clamp(88px, 16vw, 128px);
+    gap: clamp(9px, 2.1vw, 16px);
+    padding: 0 clamp(20px, 2.6vw, 22px);
+  }
+
+  .mobileHeroTrustCard i {
+    font-size: clamp(40px, 8vw, 58px);
+  }
+
+  .mobileHeroTrustCard span {
+    font-size: clamp(15px, 3.4vw, 24px);
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mobileHeroTitle {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 2.8vw, 24px);
+    width: min(86vw, 520px);
+    margin: 100px auto 0;
+    color: rgba(255, 255, 255, 0.94);
+    pointer-events: none;
+  }
+
+  .mobileHeroTitle::before,
+  .mobileHeroTitle::after {
+    content: "";
+    flex: 1;
+    max-width: 96px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62));
+  }
+
+  .mobileHeroTitle::after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.62), transparent);
+  }
+
+  .mobileHeroTitle span {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(18px, 4.2vw, 31px);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.82);
+    white-space: nowrap;
+  }
+
+  .mobileHeroTrustCards {
+    position: absolute;
+    left: 50%;
+    top:70vh;
+    z-index: 12;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(92vw, 520px);
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .mobileHeroTrustCard {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(7px, 1.6vw, 12px);
+    min-height: clamp(56px, 14vw, 70px);
+    padding: 0 clamp(18px, 2.3vw, 18px);
+    border-right: 1px solid rgba(255, 255, 255, 0.44);
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.78);
+  }
+
+  .mobileHeroTrustCard:last-child {
+    border-right: 0;
+  }
+
+  .mobileHeroTrustCard i {
+    font-size: clamp(30px, 7vw, 48px);
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .mobileHeroTrustCard span {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(11px, 2.7vw, 17px);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: 0.08em;
+  }
+
+  .mobileHeroScrollCue {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(18px, 3.6svh, 34px);
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    color: rgba(255, 255, 255, 0.86);
+    background: transparent;
+    transform: translateX(-50%);
+    cursor: pointer;
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+  }
+
+  .mobileHeroScrollCue::before {
+    content: "";
+    width: min(92vw, 520px);
+    height: 1px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  .mobileHeroScrollCue strong {
+    margin-top: 7px;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(10px, 2.5vw, 15px);
+    font-weight: 500;
+    letter-spacing: 0.48em;
+  }
+
+  .mobileHeroChevron {
+    display: block;
+    width: clamp(20px, 5.5vw, 32px);
+    height: clamp(20px, 5.5vw, 32px);
+    border-right: 4px solid currentColor;
+    border-bottom: 4px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .mobileHeroChevron + .mobileHeroChevron {
+    margin-top: -16px;
+    opacity: 0.86;
+  }
+}
+
+@media (max-width: 1030px) {
+  .mobileHeroTitle {
+    margin: 120px auto 15px;
+  }
+
+  #popustnov {
+    font-size: 32px;
+    top: calc(60svh + 12px) !important;
+  }
+
+  .mobileHeroTrustCards {
+    top: calc(73svh + 12px) !important;
+  }
+
+  #sks{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  .mobileHeroTitle {
+    margin: 90px auto 10px;
+  }
+
+  #popustnov {
+    font-size: 18px;
+    top: calc(59svh + 12px) !important;
+  }
+
+  #sks{
+    font-size: 14px;
+  }
+
+  .mobileHeroTrustCards {
+    top: calc(73svh + 12px);
+  }
+}
+
+@media (orientation: landscape){
+  #popustnov {
+    top: calc(46% + 96px) !important;
+    font-size: 25px;
+  }
+
+  .mobileHeroTitle{
+    margin: 90px auto 20px;
+  }
+
+  .mobileHeroTrustCards {
+    top: calc(71svh + 12px) !important;
+  }
+
+  .mobileHeroTrustCard span {
+    font-size:14px;
+  }
+
+  .mobileHeroTrustCard i {
+    font-size: 30px;
   }
 }

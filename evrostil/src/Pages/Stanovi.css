@@ -1294,7 +1294,7 @@ body {
   align-items: center;
   justify-content: center;
   width: min(360px, 78vw);
-  margin: 34px auto 0;
+  margin: 20px auto 15px;
 }
 
 .catalogHeadingDivider span {
@@ -1460,7 +1460,7 @@ body {
 .astraHero {
   width: min(1420px, calc(100% - 56px));
   margin: 0 auto;
-  padding: 34px;
+  padding: 10px 20px;
   padding-top: 100px;
   box-sizing: border-box;
   border: 1px solid rgba(210, 215, 220, 0.2);
@@ -1732,8 +1732,8 @@ body {
 
 .astraHeroDiscount strong {
   display: block;
-  color: #e7eaed;
-  font-size: clamp(24px, 1.2vw, 31px);
+  color: #ffffff;
+  font-size: clamp(34px, 1.5vw, 35px);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1741,7 +1741,7 @@ body {
 
 .astraHeroDiscount p {
   margin: 6px 0 0;
-  color: rgba(230, 234, 238, 0.66);
+  color: rgba(255, 255, 255, 0.66);
   font-size: 21px;
   letter-spacing: 0.05em;
 }
@@ -1753,7 +1753,7 @@ body {
   gap: 18px;
   color: #f0f2f4;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1788,7 +1788,7 @@ body {
   .astraHero {
     width: min(440px, calc(100% - 20px));
     margin-top: 0;
-    padding-top: 54px;
+    padding-top: 74px;
   }
 
   .astraHeroCopy {
@@ -1832,7 +1832,7 @@ body {
   }
 
   .astraHeroDiscount strong {
-    font-size: clamp(15px, 5vw, 22px);
+    font-size: clamp(20px, 7vw, 32px);
     letter-spacing: clamp(0.08em, 1vw, 0.16em);
     line-height: 1.16;
   }
@@ -2168,6 +2168,18 @@ body {
   line-height: 1.55;
 }
 
+@media (max-width: 1030px) {
+  .astraHero {
+    padding-top: 130px;
+  }
+}
+
+@media (max-width: 700px) {
+  .astraHero {
+    padding-top: 85px;
+  }
+}
+
 @media (max-width: 900px) {
   .projectsHeader,
   .projectWrap {
@@ -2217,6 +2229,8 @@ body {
     display: inline-block;
   }
 }
+
+
 
 /* ========================================================= */
 /* ASTRA HERO VIDEO FIX - replaces hero image styling safely */
@@ -2404,7 +2418,7 @@ body {
   }
 
   .astraHeroDiscount strong {
-    font-size: clamp(14px, 1.8vw, 20px);
+    font-size: clamp(19px, 2.8vw, 30px);
     letter-spacing: 0.08em;
     line-height: 1.16;
   }
@@ -2492,7 +2506,7 @@ body {
   }
 
   .astraHeroDiscount strong {
-    font-size: clamp(10px, 3vw, 14px);
+    font-size: clamp(16px, 3vw, 20px);
     letter-spacing: 0.04em;
   }
 
@@ -2555,3 +2569,4 @@ body {
   content: none !important;
   background: transparent !important;
 }
+

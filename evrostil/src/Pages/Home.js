@@ -3,7 +3,6 @@ import "./Home.css";
 import Carousel from "../Components/Carousel";
 import plan from "../sliki/planApartman.webp";
 import mebel from "../sliki/Mebel.webp";
-import logoOutline from "../logos/outline logo.webp";
 import drawer from "../logos/drawer.webp";
 import leftLeg from "../logos/leftLeg.webp";
 import rightLeg from "../logos/rightLeg.webp";
@@ -85,6 +84,9 @@ function Home() {
     <div className="HomeWrapper">
       <div className="Home">
         <div className="hero">
+          <div className="mobileHeroTitle" aria-hidden="true">
+            <span>ЕВРОСТИЛ-М</span>
+          </div>
           <div className="image">
             <Carousel images={heroImages} />
           </div>
@@ -134,18 +136,35 @@ function Home() {
             />
             <div id="popustnov">
               <p>
-                <span id="num">20%</span> ПОПУСТ НА МЕБЕЛ
+                20% ПОПУСТ НА МЕБЕЛ
               </p>
               <span id="sks">со секој купен стан</span>
             </div>
           </div>
-          <img
-            className="mobileHeroLogo"
-            src={logoOutline}
-            alt="Евростил-М"
-            loading="eager"
-            decoding="async"
-          />
+          <div className="mobileHeroTrustCards" aria-hidden="true">
+            <div className="mobileHeroTrustCard">
+              <i className="far fa-star"></i>
+              <span>ПРЕМИУМ<br />КВАЛИТЕТ</span>
+            </div>
+            <div className="mobileHeroTrustCard">
+              <i className="fas fa-pencil-ruler"></i>
+              <span>МЕБЕЛ<br />ПО МЕРКА</span>
+            </div>
+            <div className="mobileHeroTrustCard">
+              <i className="fas fa-shield-alt"></i>
+              <span>СИГУРНА<br />ГРАДБА</span>
+            </div>
+          </div>
+          <button
+            className="mobileHeroScrollCue"
+            type="button"
+            aria-label="Скролaј надолу"
+            onClick={() => document.querySelector(".main")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            <span className="mobileHeroChevron"></span>
+            <span className="mobileHeroChevron"></span>
+            <strong>СКРОЛАЈ</strong>
+          </button>
         </div>
 
         <div className="main">
@@ -395,3 +414,5 @@ function Home() {
 }
 
 export default Home;
+
+

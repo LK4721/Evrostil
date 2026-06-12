@@ -213,13 +213,13 @@
 .kontakt h5 {
     color: #ffffff;
     font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 25px;
+    margin: 0 auto 25px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
     position: relative;
     padding-bottom: 15px;
+    text-align: center;
 }
 
 .kontakt h5::after {
@@ -238,7 +238,7 @@
     padding: 2px;
     margin-bottom: 10px;
     border-left: 3px solid var(--accent-color);
-    background: #191717;
+    background: #0f0f0f;
     border-radius: 0 8px 8px 0;
 }
 
@@ -257,7 +257,7 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    width: 60%;
+    width: 100%;
     margin-left: 30px;
     margin-bottom: 5px;
     color: #b8b8b8;
@@ -301,8 +301,10 @@
 }
 
 .rightKontakt .contact-item {
-    margin-bottom: 13px;
-    padding-bottom: 20px;
+    align-items: center;
+    height: 50px;
+    margin: 0;
+    padding: 0 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -327,6 +329,7 @@
 .logofoot{
     display: block;
     max-width: 250px;
+    width: min(250px, 65vw);
     margin-left: auto;
     margin-right: auto;
 }
@@ -547,53 +550,41 @@
         grid-column: 1 / -1;
     }
 
-    .top-left{
-        padding:0;
-        margin:0;
-    }
 }
 
 
 @media (max-width: 1000px) {
-    .top-left{
-        height: auto;
-    }
-
-    .top-left p{
-        display:none;
-    }
-
-    .top-left img{
-        width: 60%;
-        height: auto;
-    }
-
     .siteFooter .top {
         display: flex;
         flex-direction: column;
-        padding: clamp(28px, 6vw, 34px) clamp(22px, 12vw, 122px) 0;
+        gap: 10px;
+        padding: clamp(18px, 4vw, 26px) clamp(22px, 12vw, 122px) 0;
     }
 
     .siteFooter .top-left {
-        order: 2;
-        flex: 0 0 auto;
-        width: 100%;
-        height: fit-content;
-        margin: 0;
-        padding: 0 0 5px;
-        border-right: 0;
-        border-bottom: 0;
-        border-top: 1px solid rgba(230, 230, 230, 0.3);
-        padding-top: 26px;
+        display: contents;
     }
 
     .siteFooter .top-left p {
-        font-size: 16px;
-        line-height: 1.55;
+        display: none;
     }
 
     .siteFooter .socials {
+        order: 2;
         justify-content: center;
+        gap: 18px;
+        margin-top: 14px;
+        margin-bottom: 18px;
+    }
+
+    .siteFooter .socials a {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+    }
+
+    .siteFooter .logofoot {
+        order: 0;
     }
 
     .siteFooter .top-right,
@@ -613,7 +604,7 @@
         order: 1;
         flex: 0 0 auto;
         height: fit-content;
-        margin-top: 28px;
+        margin-top: 14px;
     }
 
     .siteFooter .contact-subsection {
@@ -629,20 +620,30 @@
     }
 
     .siteFooter .rightKontakt {
-        margin: 25px 0 0;
+        margin: 14px 0 0;
     }
 
-    .top-left{
+    .leftKontakt {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    .siteFooter .leftKontakt {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
         width: 100%;
     }
 
-    .top-left p{
-        font-size:40px;
-     }
+    .siteFooter .leftKontakt h5 {
+        grid-column: 1 / -1;
+    }
 
-     
-    .leftKontakt {
-        margin-left: 0;
+    .siteFooter .leftKontakt .contact-subsection {
+        width: 100%;
+        max-width: none;
+        margin: 0;
     }
 }
 
@@ -655,10 +656,6 @@
 
     .siteFooter .top-right {
         order: 1;
-    }
-
-    .siteFooter .top-left {
-        order: 2;
     }
 }
 

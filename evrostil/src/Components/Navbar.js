@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { resetScrollPosition } from "../utils/scrollToTop";
+import logo from "../logos/outline logo1.png";
 import "./Navbar.css";
 
 let navbarIntroPlayed = false;
@@ -103,6 +104,15 @@ function Navbar() {
             <span></span>
           </button>
 
+          <NavLink
+            to="/"
+            className="navbarLogoLink"
+            aria-label="Евростил-М дома"
+            onClick={() => handleNavClick("/")}
+          >
+            <img src={logo} alt="Евростил-М" />
+          </NavLink>
+
           <div className="navbar-items">
             <ul>
               <li>
@@ -142,6 +152,10 @@ function Navbar() {
               </li>
             </ul>
           </div>
+          
+          <NavLink className="navbarPhoneLink" to="/kontakt" aria-label="Јавете се">
+            <i className="fas fa-phone"></i>
+          </NavLink>
         </div>
       </nav>
     </div>
